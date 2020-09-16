@@ -24,6 +24,6 @@
 		"noImplicitThis": true,
 		"strictNullChecks": true
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx"],
+	"include": ["src/**/*.ts", "src/**/*.tsx", "styled.d.ts"],
 	"exclude": ["node_modules/*", "public/*"]
 }
