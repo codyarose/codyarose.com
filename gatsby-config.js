@@ -17,13 +17,24 @@ module.exports = {
 		`gatsby-plugin-offline`,
 		`gatsby-plugin-react-helmet`,
 		{
-			resolve: "gatsby-plugin-local-search",
+			resolve: 'gatsby-plugin-google-fonts-v2',
 			options: {
-				name: "blog",
-				engine: "flexsearch",
+				fonts: [
+					{
+						family: 'Roboto',
+						weights: [`300`, `400`],
+					},
+				],
+			},
+		},
+		{
+			resolve: 'gatsby-plugin-local-search',
+			options: {
+				name: 'blog',
+				engine: 'flexsearch',
 				engineOptions: {
-					encode: "icase",
-					tokenize: "forward",
+					encode: 'icase',
+					tokenize: 'forward',
 					async: false,
 				},
 				query: `
@@ -43,15 +54,15 @@ module.exports = {
             }
           }
         `,
-				ref: "id",
-				index: ["title", "rawBody"],
+				ref: 'id',
+				index: ['title', 'rawBody'],
 				store: [
-					"id",
-					"slug",
-					"date",
-					"title",
-					"excerpt",
-					"description",
+					'id',
+					'slug',
+					'date',
+					'title',
+					'excerpt',
+					'description',
 				],
 				normalizer: ({ data }) =>
 					data.allMdx.nodes.map(node => ({
@@ -81,10 +92,11 @@ module.exports = {
 				name: `assets`,
 			},
 		},
+
 		{
 			resolve: `gatsby-plugin-mdx`,
 			options: {
-				extensions: [".mdx", ".md"],
+				extensions: ['.mdx', '.md'],
 				gatsbyRemarkPlugins: [
 					{
 						resolve: `gatsby-remark-images`,
