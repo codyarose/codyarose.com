@@ -1,8 +1,9 @@
-import React, { FC } from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
+import React, { FC } from 'react'
+import { Link } from 'gatsby'
+import styled, { ThemeProvider } from 'styled-components'
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from '../utils/typography'
+import theme from '../theme'
 
 interface Props {
 	location: Location
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ location, title, children }) => {
-	const __PATH_PREFIX__ = ""
+	const __PATH_PREFIX__ = ''
 	const rootPath = `${__PATH_PREFIX__}/`
 	const blogPath = `${__PATH_PREFIX__}/blog/`
 	let header
@@ -58,24 +59,24 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 		)
 	}
 	return (
-		<Wrapper>
-			<div
-				style={{
-					marginLeft: `auto`,
-					marginRight: `auto`,
-					maxWidth: rhythm(24),
-					padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-				}}
-			>
-				<header>{header}</header>
-				<main>{children}</main>
-			</div>
-			<Footer>
-				© {new Date().getFullYear()}, Built with
-				{` `}
-				<a href="https://www.gatsbyjs.org">Gatsby</a>
-			</Footer>
-		</Wrapper>
+		<ThemeProvider theme={theme}>
+			<Wrapper>
+				<div
+					style={{
+						marginLeft: `auto`,
+						marginRight: `auto`,
+					}}
+				>
+					{/* <header>{header}</header> */}
+					<main>{children}</main>
+				</div>
+				<Footer>
+					© {new Date().getFullYear()}, Built with
+					{` `}
+					<a href="https://www.gatsbyjs.org">Gatsby</a>
+				</Footer>
+			</Wrapper>
+		</ThemeProvider>
 	)
 }
 
