@@ -1,16 +1,19 @@
-import React, { FC } from "react"
-import { Link } from "gatsby"
+import React, { FC } from 'react'
+import { Link, graphql } from 'gatsby'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Button from "../components/button"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Button from '../components/button'
+import Hero from '../components/Hero'
 
 interface Props {
 	location: Location
+	data: any
 }
 
-const IndexPage: FC<Props> = ({ location }) => {
-	const siteTitle = "Gatsby Starter Personal Website"
+const IndexPage: FC<Props> = ({ data, location }) => {
+	const siteTitle = 'Gatsby Starter Personal Website'
+	const portrait = data.file.childImageSharp.fluid
 
 	return (
 		<Layout location={location} title={siteTitle}>
@@ -18,13 +21,9 @@ const IndexPage: FC<Props> = ({ location }) => {
 				title="Home"
 				keywords={[`blog`, `gatsby`, `javascript`, `react`]}
 			/>
-			<img
-				style={{ margin: 0 }}
-				src="./GatsbyScene.svg"
-				alt="Gatsby Scene"
-			/>
+			<Hero portrait={portrait} />
 			<h1>
-				Hey people{" "}
+				Hey people{' '}
 				<span role="img" aria-label="wave emoji">
 					👋
 				</span>
@@ -45,3 +44,15 @@ const IndexPage: FC<Props> = ({ location }) => {
 }
 
 export default IndexPage
+
+export const query = graphql`
+	query PortraitQuery {
+		file(relativePath: { eq: "portrait.jpg" }) {
+			childImageSharp {
+				fluid(maxWidth: 448, quality: 100) {
+					...GatsbyImageSharpFluid
+				}
+			}
+		}
+	}
+`

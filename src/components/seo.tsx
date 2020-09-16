@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 interface Props {
-	description: string
+	description?: string
 	lang?: string
 	meta?: ConcatArray<
 		| { name: string; content: any; property?: undefined }
