@@ -37,10 +37,8 @@ const down = (key: BreakpointArg) => {
 
 const between = (start: BreakpointArg, end: BreakpointArg) => {
 	if (typeof start === 'number' && typeof end === 'number') {
-		return (
-			`@media (min-width:${start}px) and` +
-			`(max-width: ${end - 5 / 100}px)`
-		)
+		return `@media (min-width:${start}px) and (max-width: ${end -
+			5 / 100}px)`
 	}
 
 	const endIndex = typeof end === 'string' && keys.indexOf(end)
@@ -54,10 +52,8 @@ const between = (start: BreakpointArg, end: BreakpointArg) => {
 	const endValue =
 		typeof end === 'number' ? end : values[keys[keys.indexOf(end) + 1]]
 
-	return (
-		`@media (min-width:${startValue}px) and` +
-		`(max-width: ${endValue - 5 / 100}px)`
-	)
+	return `@media (min-width:${startValue}px) and (max-width: ${endValue -
+		5 / 100}px)`
 }
 
 const only = (key: BreakpointArg) => between(key, key)
