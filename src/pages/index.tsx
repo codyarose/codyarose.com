@@ -50,7 +50,7 @@ export const query = graphql`
 		file(relativePath: { eq: "portrait.jpg" }) {
 			childImageSharp {
 				fluid(maxWidth: 448, quality: 100) {
-					...GatsbyImageSharpFluid
+					...GatsbyImageSharpFluid_tracedSVG
 				}
 			}
 		}
