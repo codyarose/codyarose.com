@@ -1,9 +1,8 @@
 import React, { FC } from 'react'
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
-import { MdEmail } from 'react-icons/md'
 import Img from 'gatsby-image'
 
 import Styled from './Hero.styled'
+import { Link } from 'gatsby'
 
 interface Props {
 	portrait: any
@@ -15,7 +14,7 @@ const Hero: FC<Props> = ({ portrait }) => {
 			<Styled.BioContainer>
 				<Styled.Header>
 					<a href="#0">Projects</a>
-					<a href="#0">Blog</a>
+					<Link to="/blog">Blog</Link>
 				</Styled.Header>
 				<Styled.BioContent>
 					<Styled.Title>Cody Rose</Styled.Title>
@@ -23,24 +22,19 @@ const Hero: FC<Props> = ({ portrait }) => {
 					<Styled.BioText>
 						<h2>Front End Developer</h2>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit. Quisque nisi metus, dignissim ac lobortis id,
-							lacinia a odio.
+							I'm an Austin based developer that loves building
+							beautiful, challenging UI with React and Typescript.
 						</p>
 					</Styled.BioText>
 					<Styled.Hr />
 					<Styled.SocialContainer>
 						<div />
 						<Styled.SocialIcons>
-							<a href="#github">
-								<FaGithub />
+							<a href="https://github.com/codyarose">github</a>
+							<a href="https://www.linkedin.com/in/codyarose/">
+								linkedin
 							</a>
-							<a href="#linkedin">
-								<FaLinkedinIn />
-							</a>
-							<a href="#email">
-								<MdEmail />
-							</a>
+							<a href="mailto:crose992@gmail.com">email</a>
 						</Styled.SocialIcons>
 					</Styled.SocialContainer>
 				</Styled.BioContent>

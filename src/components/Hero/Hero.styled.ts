@@ -6,6 +6,10 @@ const Container = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	background-color: ${({ theme }) => theme.colors.white};
+	font-weight: 400;
+	${({ theme }) => theme.breakpoints.down('sm')} {
+		grid-template-columns: 1fr;
+	}
 `
 
 const BioContainer = styled.div`
@@ -19,7 +23,6 @@ const Header = styled.header`
 	padding: 1.5rem;
 	font-size: 0.75rem;
 	text-transform: uppercase;
-	font-weight: 300;
 	display: grid;
 	column-gap: 2rem;
 	grid-auto-flow: column;
@@ -37,34 +40,85 @@ const BioContent = styled.div`
 	flex-flow: column;
 	justify-content: flex-end;
 	align-items: flex-start;
-	padding: 0 70px 106px;
-	font-weight: 300;
+	@media screen and (min-width: 1600px) {
+		padding: 0 70px 140px;
+	}
+	@media screen and (max-width: 1599px) {
+		padding: 0 4vw 8.5vw;
+	}
+	@media screen and (max-width: 1200px) {
+		padding-bottom: 15vw;
+	}
+	@media screen and (max-width: 1024px) {
+		padding: 4vw;
+		justify-content: center;
+	}
+	@media screen and (max-width: 768px) {
+		padding: 1.5rem;
+	}
 `
 
 const Title = styled.h1`
-	font-size: 7rem;
 	font-weight: 300;
 	line-height: 1.2;
 	letter-spacing: -5px;
 	margin-bottom: 0;
+	@media screen and (min-width: 1600px) {
+		font-size: 7rem;
+	}
+	@media screen and (max-width: 1599px) {
+		font-size: 7vw;
+	}
+	@media screen and (max-width: 1024px) {
+		letter-spacing: -2px;
+	}
+	@media screen and (max-width: 768px) {
+		letter-spacing: 0;
+		font-size: 52px;
+	}
 `
 
 const Hr = styled.hr`
 	width: 100%;
 	background: currentColor;
-	margin: 48px 0;
+	@media screen and (min-width: 1600px) {
+		margin: 3rem 0;
+	}
+	@media screen and (max-width: 1599px) {
+		margin: 3vw 0;
+	}
+	@media screen and (max-width: 768px) {
+		margin: 2rem 0;
+	}
 `
 
 const BioText = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1.7fr;
 	column-gap: 2rem;
+	@media screen and (min-width: 1600px) {
+		column-gap: 2rem;
+	}
+	@media screen and (max-width: 1599px) {
+		column-gap: 2vw;
+	}
+	@media screen and (max-width: 1200px) {
+		grid-template-columns: 1fr;
+		row-gap: 2rem;
+	}
+	@media screen and (max-width: 768px) {
+		grid-template-columns: 1fr 1.7fr;
+		column-gap: 4vw;
+	}
 	& > * {
 		font-size: 1rem;
 		font-weight: inherit;
 		letter-spacing: 2px;
 		line-height: 1.7;
 		margin-bottom: 0;
+		@media screen and (max-width: 768px) {
+			letter-spacing: 0;
+		}
 	}
 `
 
@@ -73,9 +127,24 @@ const SocialContainer = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1.7fr;
 	column-gap: 2rem;
+	@media screen and (min-width: 1600px) {
+		column-gap: 2rem;
+	}
+	@media screen and (max-width: 1599px) {
+		column-gap: 2vw;
+	}
 	a {
 		color: inherit;
-		display: flex;
+		font-size: 14px;
+		letter-spacing: 2px;
+		text-decoration: none;
+		opacity: 0.75;
+		border-bottom: 1px solid transparent;
+		transition: opacity 0.2s ease-in-out, border-color 0.2s ease-in-out;
+		&:hover {
+			opacity: 1;
+			border-color: currentColor;
+		}
 	}
 `
 
@@ -84,7 +153,12 @@ const SocialIcons = styled.div`
 	display: grid;
 	grid-auto-flow: column;
 	justify-content: flex-start;
-	column-gap: 5.25rem;
+	@media screen and (min-width: 1600px) {
+		column-gap: 5.25rem;
+	}
+	@media screen and (max-width: 1599px) {
+		column-gap: 5.25vw;
+	}
 `
 
 const ImageContainer = styled.div`
@@ -92,15 +166,14 @@ const ImageContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 2rem;
+	@media screen and (max-width: 768px) {
+		display: none;
+	}
 `
 
 const ImageWrapper = styled.div`
 	width: 100%;
 	max-width: 448px;
-	/* position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%); */
 `
 
 const Styled = {
