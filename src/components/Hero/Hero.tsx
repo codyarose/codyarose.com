@@ -19,24 +19,33 @@ const Hero: FC<Props> = ({ portrait }) => {
 				<Styled.BioContent>
 					<Styled.Title>Cody Rose</Styled.Title>
 					<Styled.Hr />
-					<Styled.BioText>
+					<Styled.BioColumns>
 						<h2>Front End Developer</h2>
 						<p>
 							I'm an Austin based developer that loves building
 							beautiful, challenging UI with React and Typescript.
 						</p>
-					</Styled.BioText>
+					</Styled.BioColumns>
 					<Styled.Hr />
-					<Styled.SocialContainer>
-						<div />
+					<Styled.BioColumns>
 						<Styled.SocialIcons>
-							<a href="https://github.com/codyarose">github</a>
-							<a href="https://www.linkedin.com/in/codyarose/">
+							<Styled.SocialLink
+								href="https://github.com/codyarose"
+								target="_blank"
+							>
+								github
+							</Styled.SocialLink>
+							<Styled.SocialLink
+								href="https://www.linkedin.com/in/codyarose/"
+								target="_blank"
+							>
 								linkedin
-							</a>
-							<a href="mailto:crose992@gmail.com">email</a>
+							</Styled.SocialLink>
+							<Styled.SocialLink href="mailto:crose992@gmail.com">
+								email
+							</Styled.SocialLink>
 						</Styled.SocialIcons>
-					</Styled.SocialContainer>
+					</Styled.BioColumns>
 				</Styled.BioContent>
 			</Styled.BioContainer>
 			<Styled.ImageContainer>

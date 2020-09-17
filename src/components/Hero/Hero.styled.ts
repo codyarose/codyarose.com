@@ -36,24 +36,26 @@ const Header = styled.header`
 `
 
 const BioContent = styled.div`
+	justify-self: flex-end;
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-end;
 	align-items: flex-start;
-	@media screen and (min-width: 1600px) {
-		padding: 0 70px 140px;
+	max-width: 950px;
+	${({ theme }) => theme.breakpoints.up('xl')} {
+		padding: 0 5rem 10rem;
 	}
-	@media screen and (max-width: 1599px) {
-		padding: 0 4vw 8.5vw;
+	${({ theme }) => theme.breakpoints.down('lg')} {
+		padding: 0 4vw 8vw;
 	}
-	@media screen and (max-width: 1200px) {
-		padding-bottom: 15vw;
+	${({ theme }) => theme.breakpoints.down('md')} {
+		padding-bottom: 14vw;
 	}
-	@media screen and (max-width: 1024px) {
-		padding: 4vw;
+	${({ theme }) => theme.breakpoints.down('sm')} {
 		justify-content: center;
+		padding: 4vw;
 	}
-	@media screen and (max-width: 768px) {
+	${({ theme }) => theme.breakpoints.down('xs')} {
 		padding: 1.5rem;
 	}
 `
@@ -61,103 +63,87 @@ const BioContent = styled.div`
 const Title = styled.h1`
 	font-weight: 300;
 	line-height: 1.2;
-	letter-spacing: -5px;
 	margin-bottom: 0;
-	@media screen and (min-width: 1600px) {
+	${({ theme }) => theme.breakpoints.up('xl')} {
 		font-size: 7rem;
 	}
-	@media screen and (max-width: 1599px) {
-		font-size: 7vw;
+	${({ theme }) => theme.breakpoints.down('lg')} {
+		font-size: 6vw;
 	}
-	@media screen and (max-width: 1024px) {
+	${({ theme }) => theme.breakpoints.up('md')} {
+		letter-spacing: -5px;
+	}
+	${({ theme }) => theme.breakpoints.between('sm', 'md')} {
 		letter-spacing: -2px;
 	}
-	@media screen and (max-width: 768px) {
-		letter-spacing: 0;
-		font-size: 52px;
+	${({ theme }) => theme.breakpoints.down('sm')} {
+		font-size: 3.25rem;
 	}
 `
 
 const Hr = styled.hr`
 	width: 100%;
 	background: currentColor;
-	@media screen and (min-width: 1600px) {
-		margin: 3rem 0;
+	${({ theme }) => theme.breakpoints.up('xl')} {
+		margin: 3.5rem 0;
 	}
-	@media screen and (max-width: 1599px) {
+	${({ theme }) => theme.breakpoints.down('lg')} {
 		margin: 3vw 0;
 	}
-	@media screen and (max-width: 768px) {
-		margin: 2rem 0;
+	${({ theme }) => theme.breakpoints.down('md')} {
+		margin: 2.5rem 0;
 	}
 `
 
-const BioText = styled.div`
+const BioColumns = styled.div`
+	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1.7fr;
-	column-gap: 2rem;
-	@media screen and (min-width: 1600px) {
+	${({ theme }) => theme.breakpoints.up('xl')} {
 		column-gap: 2rem;
 	}
-	@media screen and (max-width: 1599px) {
+	${({ theme }) => theme.breakpoints.between('sm', 'lg')} {
 		column-gap: 2vw;
 	}
-	@media screen and (max-width: 1200px) {
+	${({ theme }) => theme.breakpoints.down('xs')} {
 		grid-template-columns: 1fr;
 		row-gap: 2rem;
-	}
-	@media screen and (max-width: 768px) {
-		grid-template-columns: 1fr 1.7fr;
-		column-gap: 4vw;
 	}
 	& > * {
 		font-size: 1rem;
 		font-weight: inherit;
-		letter-spacing: 2px;
 		line-height: 1.7;
 		margin-bottom: 0;
-		@media screen and (max-width: 768px) {
-			letter-spacing: 0;
-		}
-	}
-`
-
-const SocialContainer = styled.div`
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1.7fr;
-	column-gap: 2rem;
-	@media screen and (min-width: 1600px) {
-		column-gap: 2rem;
-	}
-	@media screen and (max-width: 1599px) {
-		column-gap: 2vw;
-	}
-	a {
-		color: inherit;
-		font-size: 14px;
-		letter-spacing: 2px;
-		text-decoration: none;
-		opacity: 0.75;
-		border-bottom: 1px solid transparent;
-		transition: opacity 0.2s ease-in-out, border-color 0.2s ease-in-out;
-		&:hover {
-			opacity: 1;
-			border-color: currentColor;
+		${({ theme }) => theme.breakpoints.up('lg')} {
+			letter-spacing: 2px;
 		}
 	}
 `
 
 const SocialIcons = styled.div`
-	font-size: 1.25rem;
+	grid-column: 2;
 	display: grid;
 	grid-auto-flow: column;
 	justify-content: flex-start;
-	@media screen and (min-width: 1600px) {
+	font-size: 1.25rem;
+	${({ theme }) => theme.breakpoints.up('xl')} {
 		column-gap: 5.25rem;
 	}
-	@media screen and (max-width: 1599px) {
-		column-gap: 5.25vw;
+	${({ theme }) => theme.breakpoints.down('lg')} {
+		column-gap: 4.5vw;
+	}
+`
+const SocialLink = styled.a`
+	color: inherit;
+	font-size: 14px;
+	letter-spacing: 2px;
+	text-decoration: none;
+	opacity: 0.75;
+	border-bottom: 1px solid transparent;
+	transition: opacity 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	&:hover {
+		opacity: 1;
+		border-color: currentColor;
 	}
 `
 
@@ -165,8 +151,8 @@ const ImageContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 2rem;
-	@media screen and (max-width: 768px) {
+	padding: 5rem;
+	${({ theme }) => theme.breakpoints.down('sm')} {
 		display: none;
 	}
 `
@@ -183,9 +169,9 @@ const Styled = {
 	BioContent,
 	Title,
 	Hr,
-	BioText,
-	SocialContainer,
+	BioColumns,
 	SocialIcons,
+	SocialLink,
 	ImageContainer,
 	ImageWrapper,
 }
