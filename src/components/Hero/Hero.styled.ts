@@ -29,9 +29,16 @@ const Header = styled.header`
 	justify-content: flex-end;
 	align-self: flex-start;
 	a {
+		position: relative;
+		display: block;
 		color: inherit;
 		text-decoration: none;
 		letter-spacing: 4px;
+		opacity: 0.75;
+		transition: opacity 0.2s ease-out;
+		&:hover {
+			opacity: 1;
+		}
 	}
 `
 
@@ -127,16 +134,32 @@ const SocialIcons = styled.div`
 	}
 `
 const SocialLink = styled.a`
+	position: relative;
+	display: block;
 	color: inherit;
 	font-size: 14px;
 	letter-spacing: 2px;
 	text-decoration: none;
+	padding: 0 0.25rem;
 	opacity: 0.75;
-	border-bottom: 1px solid transparent;
-	transition: opacity 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	transition: opacity 0.2s ease-in-out;
+	overflow: hidden;
+	&::before {
+		position: absolute;
+		content: '';
+		top: 50%;
+		left: 0;
+		width: 100%;
+		height: 0.5px;
+		background-color: currentColor;
+		transform: translate(-100%, -50%);
+		transition: transform 0.5s cubic-bezier(0.42, 0, 0, 1);
+	}
 	&:hover {
 		opacity: 1;
-		border-color: currentColor;
+		&::before {
+			transform: translate(0, -50%);
+		}
 	}
 `
 
