@@ -5,6 +5,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
 import Hero from '../components/Hero'
+import Projects from '../components/Projects'
 
 interface Props {
 	location: Location
@@ -22,6 +23,7 @@ const IndexPage: FC<Props> = ({ data, location }) => {
 				keywords={[`blog`, `gatsby`, `javascript`, `react`]}
 			/>
 			<Hero portrait={portrait} />
+			<Projects />
 			<h1>
 				Hey people{' '}
 				<span role="img" aria-label="wave emoji">
