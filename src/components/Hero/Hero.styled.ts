@@ -62,19 +62,14 @@ const BioContent = styled.div`
 
 const Title = styled.h1`
 	font-weight: 300;
-	line-height: 1.2;
+	line-height: 1;
 	margin-bottom: 0;
+	letter-spacing: -0.06em;
 	${({ theme }) => theme.breakpoints.up('xl')} {
 		font-size: 7rem;
 	}
 	${({ theme }) => theme.breakpoints.down('lg')} {
 		font-size: 6vw;
-	}
-	${({ theme }) => theme.breakpoints.up('md')} {
-		letter-spacing: -5px;
-	}
-	${({ theme }) => theme.breakpoints.between('sm', 'md')} {
-		letter-spacing: -2px;
 	}
 	${({ theme }) => theme.breakpoints.down('sm')} {
 		font-size: 3.25rem;
@@ -110,8 +105,6 @@ const BioColumns = styled.div`
 		row-gap: 2rem;
 	}
 	& > * {
-		font-size: 1rem;
-		font-weight: inherit;
 		line-height: 1.7;
 		margin-bottom: 0;
 		${({ theme }) => theme.breakpoints.up('lg')} {

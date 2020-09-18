@@ -20,7 +20,7 @@ const Hero: FC<Props> = ({ portrait }) => {
 					<Styled.Title>Cody Rose</Styled.Title>
 					<Styled.Hr />
 					<Styled.BioColumns>
-						<h2>Front End Developer</h2>
+						<span>Front End Developer</span>
 						<p>
 							I'm an Austin based developer that loves building
 							beautiful, challenging UI with React and Typescript.

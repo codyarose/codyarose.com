@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
 import theme from '../theme'
+import GlobalStyles from '../theme/globalStyles'
 
 interface Props {
 	location: Location
@@ -60,6 +61,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 	}
 	return (
 		<ThemeProvider theme={theme}>
+			<GlobalStyles />
 			<Wrapper>
 				<div
 					style={{

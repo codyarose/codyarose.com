@@ -17,17 +17,6 @@ module.exports = {
 		`gatsby-plugin-offline`,
 		`gatsby-plugin-react-helmet`,
 		{
-			resolve: 'gatsby-plugin-google-fonts-v2',
-			options: {
-				fonts: [
-					{
-						family: 'Roboto',
-						weights: [`300`, `400`],
-					},
-				],
-			},
-		},
-		{
 			resolve: 'gatsby-plugin-local-search',
 			options: {
 				name: 'blog',
