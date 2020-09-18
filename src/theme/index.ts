@@ -1,4 +1,5 @@
 import { breakpoints } from './breakpoints'
+import { spacing } from './spacing'
 
 const theme = {
 	colors: {
@@ -6,6 +7,7 @@ const theme = {
 		white: '#fff',
 	},
 	breakpoints,
+	spacing,
 } as const
 
 export default theme
