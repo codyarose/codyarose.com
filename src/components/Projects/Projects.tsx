@@ -5,33 +5,14 @@ import { FaGithub as GithubIcon } from 'react-icons/fa'
 import { Hr } from '../Hr'
 import { Text } from '../Text'
 import Fade from '../Fade'
-
-const projects = [
-	{
-		title: 'Budget App',
-		desc:
-			'A full stack expense tracking app built with React, Typescript, Redux, and Firebase.',
-		githubSlug: 'budget-app',
-	},
-	{
-		title: 'BotW Cooking',
-		desc:
-			'An app for the Breath of the Wild cooking system built with React and Typescript.',
-		githubSlug: 'botw-cooking',
-	},
-	{
-		title: 'Signature Builder',
-		desc: 'An email signature builder built with React',
-		githubSlug: 'react-email-signature-builder',
-	},
-]
+import { projects } from './data'
 
 const Projects: FC = () => {
-	const [currentItem, setCurrentItem] = useState(projects[0])
+	const [currentIndex, setCurrentIndex] = useState(0)
 
 	const handleHover = (e: MouseEvent<HTMLLIElement>) => {
 		const { value } = e.target as HTMLLIElement
-		setCurrentItem(projects[value])
+		setCurrentIndex(value)
 	}
 
 	return (
@@ -44,7 +25,7 @@ const Projects: FC = () => {
 				<StyledDescriptionContainer>
 					{projects.map((project, i) => (
 						<StyledDescription key={i}>
-							<Fade show={currentItem === project}>
+							<Fade show={currentIndex === i}>
 								<p>{project.desc}</p>
 								<a
 									href={`https://github.com/codyarose/${project.githubSlug}`}
@@ -64,7 +45,7 @@ const Projects: FC = () => {
 								key={i}
 								onMouseEnter={handleHover}
 								value={i}
-								active={currentItem === project}
+								active={currentIndex === i}
 							>
 								{project.title}
 							</StyledProjectItem>
