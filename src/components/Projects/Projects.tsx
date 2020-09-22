@@ -1,10 +1,11 @@
 import React, { FC, useState, MouseEvent } from 'react'
 
-import { Hr } from '../Hr'
-import { Text } from '../Text'
-import Fade from '../Fade'
+import { Hr } from '../shared/Hr'
+import { Text } from '../shared/Text'
+import Fade from '../shared/Fade'
 import { projects } from './data'
 import { Styled } from './Projects.styled'
+import { Container } from '../shared/Container'
 
 const Projects: FC = () => {
 	const [currentIndex, setCurrentIndex] = useState(0)
@@ -15,7 +16,7 @@ const Projects: FC = () => {
 	}
 
 	return (
-		<Styled.Container id="projects">
+		<Container id="projects">
 			<Styled.Content>
 				<Styled.Title>
 					<Styled.H2>
@@ -53,7 +54,7 @@ const Projects: FC = () => {
 					</Styled.ProjectsList>
 				</Styled.Projects>
 			</Styled.Content>
-		</Styled.Container>
+		</Container>
 	)
 }
 

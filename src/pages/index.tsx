@@ -7,6 +7,7 @@ import SEO from '../components/seo'
 import Hero from '../components/Hero'
 import Projects from '../components/Projects'
 import Header from '../components/Header'
+import About from '../components/About'
 
 interface Props {
 	location: Location
@@ -33,6 +34,7 @@ const IndexPage: FC<Props> = ({ data, location }) => {
 			<Header />
 			<Hero portrait={portrait} />
 			<Projects />
+			<About />
 		</Layout>
 	)
 }
