@@ -3,8 +3,8 @@ import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 
 import Styled from './Hero.styled'
-import { Hr } from '../Hr'
-import { Text } from '../Text'
+import { Hr } from '../shared/Hr'
+import { Text } from '../shared/Text'
 
 interface Props {
 	portrait: any
