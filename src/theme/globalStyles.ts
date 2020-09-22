@@ -11,6 +11,9 @@ const GlobalStyles = createGlobalStyle`
 	*::after {
 		box-sizing: border-box;
 	}
+	html {
+		scroll-behavior: smooth;
+	}
 `
 
 export default GlobalStyles
