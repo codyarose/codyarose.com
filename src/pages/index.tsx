@@ -12,14 +12,21 @@ interface Props {
 }
 
 const IndexPage: FC<Props> = ({ data, location }) => {
-	const siteTitle = 'Gatsby Starter Personal Website'
+	const siteTitle = 'Cody Rose'
 	const portrait = data.file.childImageSharp.fluid
 
 	return (
 		<Layout location={location} title={siteTitle}>
 			<SEO
 				title="Home"
-				keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+				keywords={[
+					`Cody Rose`,
+					`front end developer`,
+					`blog`,
+					`gatsby`,
+					`javascript`,
+					`react`,
+				]}
 			/>
 			<Hero portrait={portrait} />
 			<Projects />
