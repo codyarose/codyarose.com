@@ -1,5 +1,6 @@
 import { breakpoints } from './breakpoints'
 import { spacing } from './spacing'
+import { fontFamily } from './fontFamily'
 
 const theme = {
 	colors: {
@@ -8,6 +9,7 @@ const theme = {
 	},
 	breakpoints,
 	spacing,
+	fontFamily,
 } as const
 
 export default theme

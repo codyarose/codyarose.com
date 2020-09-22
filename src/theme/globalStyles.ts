@@ -5,6 +5,12 @@ const GlobalStyles = createGlobalStyle`
 		font-family: "Butler Bold";
 		src: url("/fonts/Butler-Bold.woff2");
 	}
+	html,
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
 `
 
 export default GlobalStyles

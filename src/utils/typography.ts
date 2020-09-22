@@ -3,7 +3,7 @@ import Typography from 'typography'
 const typography = new Typography({
 	baseFontSize: '16px',
 	baseLineHeight: 1.2,
-	headerFontFamily: ['Butler Bold', 'serif'],
+	headerFontFamily: ['Butler Bold', 'Georgia', 'Times New Roman', 'serif'],
 	bodyFontFamily: ['Helvetica Neue', 'Arial', 'Helvetica', 'sans-serif'],
 })
 

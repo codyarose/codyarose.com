@@ -83,20 +83,6 @@ const Title = styled.h1`
 	}
 `
 
-const Hr = styled.hr`
-	width: 100%;
-	background: currentColor;
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		margin: 3.5rem 0;
-	}
-	${({ theme }) => theme.breakpoints.down('lg')} {
-		margin: 3vw 0;
-	}
-	${({ theme }) => theme.breakpoints.down('md')} {
-		margin: 2.5rem 0;
-	}
-`
-
 const BioColumns = styled.div`
 	width: 100%;
 	display: grid;
@@ -110,13 +96,6 @@ const BioColumns = styled.div`
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		grid-template-columns: 1fr;
 		row-gap: 2rem;
-	}
-	& > * {
-		line-height: 1.7;
-		margin-bottom: 0;
-		${({ theme }) => theme.breakpoints.up('lg')} {
-			letter-spacing: 2px;
-		}
 	}
 `
 
@@ -184,7 +163,6 @@ const Styled = {
 	Header,
 	BioContent,
 	Title,
-	Hr,
 	BioColumns,
 	SocialIcons,
 	SocialLink,

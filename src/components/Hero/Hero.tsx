@@ -1,8 +1,10 @@
 import React, { FC } from 'react'
 import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 
 import Styled from './Hero.styled'
-import { Link } from 'gatsby'
+import { Hr } from '../Hr'
+import { Text } from '../Text'
 
 interface Props {
 	portrait: any
@@ -18,15 +20,15 @@ const Hero: FC<Props> = ({ portrait }) => {
 				</Styled.Header>
 				<Styled.BioContent>
 					<Styled.Title>Cody Rose</Styled.Title>
-					<Styled.Hr />
+					<Hr />
 					<Styled.BioColumns>
-						<span>Front End Developer</span>
-						<p>
+						<Text.Spaced>Front End Developer</Text.Spaced>
+						<Text.Spaced>
 							I'm an Austin based developer that loves building
 							beautiful, challenging UI with React and Typescript.
-						</p>
+						</Text.Spaced>
 					</Styled.BioColumns>
-					<Styled.Hr />
+					<Hr />
 					<Styled.BioColumns>
 						<Styled.SocialIcons>
 							<Styled.SocialLink
