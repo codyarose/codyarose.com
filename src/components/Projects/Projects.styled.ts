@@ -1,20 +1,6 @@
 import styled from 'styled-components'
 
-import { Text } from '../Text'
-
-const Container = styled.section`
-	background-color: ${({ theme }) => theme.colors.black};
-	color: ${({ theme }) => theme.colors.white};
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		padding: ${({ theme }) => theme.spacing(28, 0)};
-	}
-	${({ theme }) => theme.breakpoints.down('lg')} {
-		padding: 11vw 0;
-	}
-	${({ theme }) => theme.breakpoints.down('md')} {
-		padding: ${({ theme }) => theme.spacing(17.5, 0)};
-	}
-`
+import { Text } from '../shared/Text'
 
 const Content = styled.div`
 	width: 100%;
@@ -155,7 +141,6 @@ const ProjectItem = styled.li<ProjectItemProps>`
 `
 
 export const Styled = {
-	Container,
 	Content,
 	DescriptionContainer,
 	Title,
