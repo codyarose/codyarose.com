@@ -3,8 +3,10 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+
 import Hero from '../components/Hero'
 import Projects from '../components/Projects'
+import Header from '../components/Header'
 
 interface Props {
 	location: Location
@@ -28,6 +30,7 @@ const IndexPage: FC<Props> = ({ data, location }) => {
 					`react`,
 				]}
 			/>
+			<Header />
 			<Hero portrait={portrait} />
 			<Projects />
 		</Layout>

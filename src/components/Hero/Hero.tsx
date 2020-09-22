@@ -14,10 +14,6 @@ const Hero: FC<Props> = ({ portrait }) => {
 	return (
 		<Styled.Container>
 			<Styled.BioContainer>
-				<Styled.Header>
-					<a href="#projects">Projects</a>
-					<Link to="/blog">Blog</Link>
-				</Styled.Header>
 				<Styled.BioContent>
 					<Styled.Title>Cody Rose</Styled.Title>
 					<Hr />
