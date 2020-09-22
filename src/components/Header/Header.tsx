@@ -6,8 +6,8 @@ const Header: FC = () => {
 	return (
 		<StyledHeader>
 			<StyledContent>
-				<a href="#projects">Projects</a>
-				<a href="#about">About</a>
+				<Link to="#projects">Projects</Link>
+				<Link to="#about">About</Link>
 				<Link to="/blog">Blog</Link>
 			</StyledContent>
 		</StyledHeader>
