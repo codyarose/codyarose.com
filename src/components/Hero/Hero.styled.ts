@@ -2,10 +2,11 @@ import styled from 'styled-components'
 
 const Container = styled.div`
 	width: 100%;
-	min-height: 100vh;
+	min-height: calc(100vh - 62px);
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	background-color: ${({ theme }) => theme.colors.white};
+	background-color: ${({ theme }) => theme.colors.black};
+	color: ${({ theme }) => theme.colors.white};
 	font-weight: 400;
 	${({ theme }) => theme.breakpoints.down('sm')} {
 		grid-template-columns: 1fr;
@@ -13,33 +14,8 @@ const Container = styled.div`
 `
 
 const BioContainer = styled.div`
-	background-color: ${({ theme }) => theme.colors.black};
-	color: ${({ theme }) => theme.colors.white};
 	display: grid;
-	grid-template-rows: auto 1fr;
-`
-
-const Header = styled.header`
-	padding: 1.5rem;
-	font-size: 0.75rem;
-	text-transform: uppercase;
-	display: grid;
-	column-gap: 2rem;
-	grid-auto-flow: column;
-	justify-content: flex-end;
-	align-self: flex-start;
-	a {
-		position: relative;
-		display: block;
-		color: inherit;
-		text-decoration: none;
-		letter-spacing: 4px;
-		opacity: 0.75;
-		transition: opacity 0.2s ease-out;
-		&:hover {
-			opacity: 1;
-		}
-	}
+	grid-template-rows: auto;
 `
 
 const BioContent = styled.div`
@@ -48,7 +24,7 @@ const BioContent = styled.div`
 	flex-flow: column;
 	justify-content: flex-end;
 	align-items: flex-start;
-	max-width: 950px;
+	max-width: 850px;
 	${({ theme }) => theme.breakpoints.up('xl')} {
 		padding: 0 5rem 10rem;
 	}
@@ -56,11 +32,11 @@ const BioContent = styled.div`
 		padding: 0 4vw 8vw;
 	}
 	${({ theme }) => theme.breakpoints.down('md')} {
-		padding-bottom: 14vw;
-	}
-	${({ theme }) => theme.breakpoints.down('sm')} {
 		justify-content: center;
 		padding: 4vw;
+	}
+	${({ theme }) => theme.breakpoints.down('sm')} {
+		margin: 0 auto;
 	}
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		padding: 1.5rem;
@@ -111,6 +87,9 @@ const SocialIcons = styled.div`
 	${({ theme }) => theme.breakpoints.down('lg')} {
 		column-gap: 4.5vw;
 	}
+	${({ theme }) => theme.breakpoints.down('md')} {
+		column-gap: 3vw;
+	}
 `
 const SocialLink = styled.a`
 	position: relative;
@@ -144,7 +123,6 @@ const SocialLink = styled.a`
 
 const ImageContainer = styled.div`
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	padding: 5rem;
 	${({ theme }) => theme.breakpoints.down('sm')} {
@@ -160,7 +138,6 @@ const ImageWrapper = styled.div`
 const Styled = {
 	Container,
 	BioContainer,
-	Header,
 	BioContent,
 	Title,
 	BioColumns,

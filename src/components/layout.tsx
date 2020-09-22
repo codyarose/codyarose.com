@@ -72,11 +72,13 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 					{/* <header>{header}</header> */}
 					<main>{children}</main>
 				</div>
-				<Footer>
-					© {new Date().getFullYear()}, Built with
-					{` `}
-					<a href="https://www.gatsbyjs.org">Gatsby</a>
-				</Footer>
+				<StyledFooter>
+					<StyledFooterContent>
+						<a href="#0">github</a>
+						<a href="#0">linkedin</a>
+						<a href="#0">email</a>
+					</StyledFooterContent>
+				</StyledFooter>
 			</Wrapper>
 		</ThemeProvider>
 	)
@@ -86,9 +88,27 @@ const Wrapper = styled.div`
 	min-height: 100vh;
 `
 
-const Footer = styled.footer`
-	text-align: center;
-	margin: 24px;
+const StyledFooter = styled.footer`
+	padding: ${({ theme }) => theme.spacing(3)};
+	background-color: ${({ theme }) => theme.colors.black};
+	color: ${({ theme }) => theme.colors.white};
+	a {
+		color: inherit;
+		text-decoration: none;
+		opacity: 0.75;
+		transition: opacity 0.2s ease-out;
+		&:hover {
+			opacity: 1;
+		}
+	}
+`
+
+const StyledFooterContent = styled.div`
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
 `
 
 export default Layout
