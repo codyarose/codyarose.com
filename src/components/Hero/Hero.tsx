@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import Img from 'gatsby-image'
-import { Link } from 'gatsby'
 
 import Styled from './Hero.styled'
 import { Hr } from '../shared/Hr'
