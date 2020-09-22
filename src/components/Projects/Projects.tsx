@@ -15,7 +15,7 @@ const Projects: FC = () => {
 	}
 
 	return (
-		<Styled.Container>
+		<Styled.Container id="projects">
 			<Styled.Content>
 				<Styled.Title>
 					<Styled.H2>

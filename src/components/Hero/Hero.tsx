@@ -15,7 +15,7 @@ const Hero: FC<Props> = ({ portrait }) => {
 		<Styled.Container>
 			<Styled.BioContainer>
 				<Styled.Header>
-					<a href="#0">Projects</a>
+					<a href="#projects">Projects</a>
 					<Link to="/blog">Blog</Link>
 				</Styled.Header>
 				<Styled.BioContent>
