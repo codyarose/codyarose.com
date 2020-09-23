@@ -1,22 +1,6 @@
 import styled from 'styled-components'
 
-import { Content as ContentComponent } from '../shared/Content'
 import { Text } from '../shared/Text'
-
-const Content = styled(ContentComponent)`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto auto;
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		column-gap: ${({ theme }) => theme.spacing(8)};
-	}
-	${({ theme }) => theme.breakpoints.down('lg')} {
-		column-gap: 7vw;
-	}
-	${({ theme }) => theme.breakpoints.down('sm')} {
-		grid-template-columns: 1fr;
-	}
-`
 
 const DescriptionContainer = styled.div`
 	position: relative;
@@ -121,7 +105,6 @@ const ProjectItem = styled.li<ProjectItemProps>`
 `
 
 export const Styled = {
-	Content,
 	DescriptionContainer,
 	Title,
 	H2,

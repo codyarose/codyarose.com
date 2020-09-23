@@ -6,6 +6,7 @@ import Fade from '../shared/Fade'
 import { projects } from './data'
 import { Styled } from './Projects.styled'
 import { Container } from '../shared/Container'
+import { Content } from '../shared/Content'
 
 const Projects: FC = () => {
 	const [currentIndex, setCurrentIndex] = useState(0)
@@ -17,7 +18,7 @@ const Projects: FC = () => {
 
 	return (
 		<Container id="projects">
-			<Styled.Content>
+			<Content>
 				<Styled.Title>
 					<Styled.H2>
 						<Text.Spaced>Projects</Text.Spaced>
@@ -53,7 +54,7 @@ const Projects: FC = () => {
 						))}
 					</Styled.ProjectsList>
 				</Styled.Projects>
-			</Styled.Content>
+			</Content>
 		</Container>
 	)
 }
