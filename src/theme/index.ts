@@ -4,7 +4,7 @@ import { fontFamily } from './fontFamily'
 
 const theme = {
 	colors: {
-		black: '#000',
+		black: '#0a0500',
 		white: '#fff',
 	},
 	breakpoints,
