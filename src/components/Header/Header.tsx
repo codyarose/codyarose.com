@@ -19,8 +19,6 @@ export default Header
 const StyledHeader = styled.header`
 	position: sticky;
 	top: 0;
-	background-color: ${({ theme }) => theme.colors.black};
-	color: ${({ theme }) => theme.colors.white};
 	padding: ${({ theme }) => theme.spacing(2)};
 	text-transform: uppercase;
 	letter-spacing: 4px;
