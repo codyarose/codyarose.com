@@ -31,7 +31,6 @@ const IndexPage: FC<Props> = ({ data, location }) => {
 					`react`,
 				]}
 			/>
-			<Header />
 			<Hero portrait={portrait} />
 			<Projects />
 			<About />

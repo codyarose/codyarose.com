@@ -2,9 +2,9 @@ import React, { FC } from 'react'
 import { Link } from 'gatsby'
 import styled, { ThemeProvider } from 'styled-components'
 
-import { rhythm, scale } from '../utils/typography'
 import theme from '../theme'
 import GlobalStyles from '../theme/globalStyles'
+import Header from './Header'
 
 interface Props {
 	location: Location
@@ -18,26 +18,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 	let header
 
 	if (location.pathname === rootPath || location.pathname === blogPath) {
-		header = (
-			<h1
-				style={{
-					...scale(1.5),
-					marginBottom: rhythm(1.5),
-					marginTop: 0,
-				}}
-			>
-				<Link
-					style={{
-						boxShadow: `none`,
-						textDecoration: `none`,
-						color: `inherit`,
-					}}
-					to={location.pathname === blogPath ? `/blog/` : `/`}
-				>
-					{title}
-				</Link>
-			</h1>
-		)
+		header = <Header />
 	} else {
 		header = (
 			<h3
@@ -69,7 +50,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 						marginRight: `auto`,
 					}}
 				>
-					{/* <header>{header}</header> */}
+					{header}
 					<main>{children}</main>
 				</div>
 				<StyledFooter>
