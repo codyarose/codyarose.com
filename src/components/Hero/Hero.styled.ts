@@ -1,28 +1,13 @@
 import styled from 'styled-components'
 
-import { Content as ContentComponent } from '../shared/Content'
+import { Container as ContainerComponent } from '../shared/Container'
 
-const Container = styled.div`
+const Container = styled(ContainerComponent)`
 	width: 100%;
 	display: flex;
 	align-items: center;
-	padding: ${({ theme }) => theme.spacing(5, 0)};
 	${({ theme }) => theme.breakpoints.up('md')} {
 		min-height: calc(100vh - 78px);
-	}
-`
-
-const Content = styled(ContentComponent)`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		column-gap: ${({ theme }) => theme.spacing(8)};
-	}
-	${({ theme }) => theme.breakpoints.down('lg')} {
-		column-gap: 7vw;
-	}
-	${({ theme }) => theme.breakpoints.down('sm')} {
-		grid-template-columns: 1fr;
 	}
 `
 
@@ -102,7 +87,6 @@ const ImageWrapper = styled.div`
 
 const Styled = {
 	Container,
-	Content,
 	BioContent,
 	Title,
 	SocialIcons,

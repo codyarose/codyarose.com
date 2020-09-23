@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import Img from 'gatsby-image'
 
+import { Content } from '../shared/Content'
 import Styled from './Hero.styled'
 import { Hr } from '../shared/Hr'
 import { Text } from '../shared/Text'
@@ -12,7 +13,7 @@ interface Props {
 const Hero: FC<Props> = ({ portrait }) => {
 	return (
 		<Styled.Container>
-			<Styled.Content>
+			<Content>
 				<Styled.BioContent>
 					<Styled.Title>Cody Rose</Styled.Title>
 					<Hr />
@@ -49,7 +50,7 @@ const Hero: FC<Props> = ({ portrait }) => {
 						/>
 					</Styled.ImageWrapper>
 				</Styled.ImageContainer>
-			</Styled.Content>
+			</Content>
 		</Styled.Container>
 	)
 }

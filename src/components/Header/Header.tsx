@@ -17,13 +17,10 @@ const Header: FC = () => {
 export default Header
 
 const StyledHeader = styled.header`
-	position: sticky;
-	top: 0;
 	padding: ${({ theme }) => theme.spacing(2)};
 	text-transform: uppercase;
 	letter-spacing: 4px;
 	font-size: 0.75rem;
-	z-index: 1;
 	a {
 		color: inherit;
 		text-decoration: none;
