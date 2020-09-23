@@ -6,9 +6,9 @@ const Header: FC = () => {
 	return (
 		<StyledHeader>
 			<StyledContent>
+				<Link to="/blog">Blog</Link>
 				<Link to="#projects">Projects</Link>
 				<Link to="#about">About</Link>
-				<Link to="/blog">Blog</Link>
 			</StyledContent>
 		</StyledHeader>
 	)
@@ -21,7 +21,7 @@ const StyledHeader = styled.header`
 	top: 0;
 	background-color: ${({ theme }) => theme.colors.black};
 	color: ${({ theme }) => theme.colors.white};
-	padding: ${({ theme }) => theme.spacing(3)};
+	padding: ${({ theme }) => theme.spacing(2)};
 	text-transform: uppercase;
 	letter-spacing: 4px;
 	font-size: 0.75rem;
