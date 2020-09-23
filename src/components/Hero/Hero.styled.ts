@@ -91,7 +91,6 @@ const SocialLink = styled.a`
 const ImageContainer = styled.div`
 	display: flex;
 	align-items: center;
-	/* padding: 5rem; */
 	${({ theme }) => theme.breakpoints.down('sm')} {
 		display: none;
 	}
@@ -99,7 +98,6 @@ const ImageContainer = styled.div`
 
 const ImageWrapper = styled.div`
 	width: 100%;
-	max-width: 448px;
 `
 
 const Styled = {
