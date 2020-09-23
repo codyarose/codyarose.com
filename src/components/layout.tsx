@@ -77,9 +77,7 @@ const Wrapper = styled.div`
 `
 
 const StyledFooter = styled.footer`
-	padding: ${({ theme }) => theme.spacing(3)};
-	background-color: ${({ theme }) => theme.colors.black};
-	color: ${({ theme }) => theme.colors.white};
+	padding: ${({ theme }) => theme.spacing(2)};
 	a {
 		color: inherit;
 		text-decoration: none;

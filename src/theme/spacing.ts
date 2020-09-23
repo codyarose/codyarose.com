@@ -1,6 +1,6 @@
-const baseUnit = 8
+const baseUnit = 16
 
-type SpacingArg = number | 'auto'
+type SpacingArg = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 'auto'
 
 export const spacing = (...props: SpacingArg[]) =>
 	props.reduce((acc: string, curr: SpacingArg, currIndex) => {

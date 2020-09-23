@@ -1,45 +1,40 @@
 import styled from 'styled-components'
 
+import { Content as ContentComponent } from '../shared/Content'
+
 const Container = styled.div`
 	width: 100%;
-	min-height: calc(100vh - 62px);
+	display: flex;
+	align-items: center;
+	padding: ${({ theme }) => theme.spacing(5, 0)};
+	${({ theme }) => theme.breakpoints.up('md')} {
+		min-height: calc(100vh - 78px);
+	}
+`
+
+const Content = styled(ContentComponent)`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	background-color: ${({ theme }) => theme.colors.black};
-	color: ${({ theme }) => theme.colors.white};
-	font-weight: 400;
+	${({ theme }) => theme.breakpoints.up('xl')} {
+		column-gap: ${({ theme }) => theme.spacing(8)};
+	}
+	${({ theme }) => theme.breakpoints.down('lg')} {
+		column-gap: 7vw;
+	}
 	${({ theme }) => theme.breakpoints.down('sm')} {
 		grid-template-columns: 1fr;
 	}
 `
 
-const BioContainer = styled.div`
-	display: grid;
-	grid-template-rows: auto;
-`
-
 const BioContent = styled.div`
-	justify-self: flex-end;
+	width: 100%;
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-end;
 	align-items: flex-start;
-	max-width: 850px;
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		padding: 0 5rem 10rem;
-	}
-	${({ theme }) => theme.breakpoints.down('lg')} {
-		padding: 0 4vw 8vw;
-	}
+	margin: 0 auto;
 	${({ theme }) => theme.breakpoints.down('md')} {
 		justify-content: center;
-		padding: 4vw;
-	}
-	${({ theme }) => theme.breakpoints.down('sm')} {
-		margin: 0 auto;
-	}
-	${({ theme }) => theme.breakpoints.down('xs')} {
-		padding: 1.5rem;
 	}
 `
 
@@ -48,54 +43,26 @@ const Title = styled.h1`
 	line-height: 1;
 	margin-bottom: 0;
 	letter-spacing: -0.06em;
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		font-size: 7rem;
-	}
-	${({ theme }) => theme.breakpoints.down('lg')} {
-		font-size: 6vw;
-	}
+	font-size: 5rem;
 	${({ theme }) => theme.breakpoints.down('sm')} {
 		font-size: 3.25rem;
 	}
 `
 
-const BioColumns = styled.div`
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1.7fr;
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		column-gap: 2rem;
-	}
-	${({ theme }) => theme.breakpoints.between('sm', 'lg')} {
-		column-gap: 2vw;
-	}
-	${({ theme }) => theme.breakpoints.down('xs')} {
-		grid-template-columns: 1fr;
-		row-gap: 2rem;
-	}
-`
-
 const SocialIcons = styled.div`
-	grid-column: 2;
 	display: grid;
 	grid-auto-flow: column;
-	justify-content: flex-start;
-	font-size: 1.25rem;
+	font-size: 14px;
 	${({ theme }) => theme.breakpoints.up('xl')} {
-		column-gap: 5.25rem;
+		column-gap: ${({ theme }) => theme.spacing(4)};
 	}
 	${({ theme }) => theme.breakpoints.down('lg')} {
-		column-gap: 4.5vw;
-	}
-	${({ theme }) => theme.breakpoints.down('md')} {
 		column-gap: 3vw;
 	}
 `
 const SocialLink = styled.a`
 	position: relative;
-	display: block;
 	color: inherit;
-	font-size: 14px;
 	letter-spacing: 2px;
 	text-decoration: none;
 	padding: 0 0.25rem;
@@ -124,7 +91,6 @@ const SocialLink = styled.a`
 const ImageContainer = styled.div`
 	display: flex;
 	align-items: center;
-	padding: 5rem;
 	${({ theme }) => theme.breakpoints.down('sm')} {
 		display: none;
 	}
@@ -132,15 +98,13 @@ const ImageContainer = styled.div`
 
 const ImageWrapper = styled.div`
 	width: 100%;
-	max-width: 448px;
 `
 
 const Styled = {
 	Container,
-	BioContainer,
+	Content,
 	BioContent,
 	Title,
-	BioColumns,
 	SocialIcons,
 	SocialLink,
 	ImageContainer,

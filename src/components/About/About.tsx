@@ -33,7 +33,7 @@ const StyledContent = styled.div`
 	max-width: 1120px;
 	margin: 0 auto;
 	${({ theme }) => theme.breakpoints.up('xl')} {
-		padding: ${({ theme }) => theme.spacing(0, 8.75)};
+		padding: ${({ theme }) => theme.spacing(0, 4)};
 	}
 	${({ theme }) => theme.breakpoints.down('lg')} {
 		padding: 0 4vw;

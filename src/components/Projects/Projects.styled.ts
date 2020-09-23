@@ -18,7 +18,7 @@ const DescriptionContainer = styled.div`
 	max-width: 560px;
 	justify-self: flex-end;
 	${({ theme }) => theme.breakpoints.up('xl')} {
-		padding: ${({ theme }) => theme.spacing(0, 8.75)};
+		padding: ${({ theme }) => theme.spacing(0, 4)};
 	}
 	${({ theme }) => theme.breakpoints.down('lg')} {
 		padding: 0 4vw;
@@ -43,7 +43,7 @@ const Title = styled.div`
 	max-width: 560px;
 	margin-bottom: 0;
 	${({ theme }) => theme.breakpoints.up('xl')} {
-		padding: ${({ theme }) => theme.spacing(0, 8.75)};
+		padding: ${({ theme }) => theme.spacing(0, 4)};
 	}
 	${({ theme }) => theme.breakpoints.down('lg')} {
 		padding: 0 4vw;
@@ -87,7 +87,7 @@ const ProjectsList = styled.ul`
 	margin: 0;
 	list-style-type: none;
 	${({ theme }) => theme.breakpoints.up('xl')} {
-		padding: ${({ theme }) => theme.spacing(0, 8.75)};
+		padding: ${({ theme }) => theme.spacing(0, 4)};
 	}
 	${({ theme }) => theme.breakpoints.down('lg')} {
 		font-size: 4rem;
@@ -112,7 +112,7 @@ const ProjectItem = styled.li<ProjectItemProps>`
 	opacity: ${({ active }) => (active ? 1 : 0.75)};
 	transition: opacity 0.2s ease-out;
 	${({ theme }) => theme.breakpoints.up('md')} {
-		--spacing: ${({ theme }) => theme.spacing(3.5)};
+		--spacing: ${({ theme }) => theme.spacing(2)};
 		--default-showing: 10px;
 		position: relative;
 		padding-left: var(--spacing);
