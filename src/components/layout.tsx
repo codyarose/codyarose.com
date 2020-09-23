@@ -74,9 +74,16 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 				</div>
 				<StyledFooter>
 					<StyledFooterContent>
-						<a href="#0">github</a>
-						<a href="#0">linkedin</a>
-						<a href="#0">email</a>
+						<a href="https://github.com/codyarose" target="_blank">
+							github
+						</a>
+						<a
+							href="https://www.linkedin.com/in/codyarose/"
+							target="_blank"
+						>
+							linkedin
+						</a>
+						<a href="mailto:crose992@gmail.com">email</a>
 					</StyledFooterContent>
 				</StyledFooter>
 			</Wrapper>
