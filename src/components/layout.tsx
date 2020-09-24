@@ -20,7 +20,7 @@ interface SocialQuery {
 	}
 }
 
-const Layout: FC<Props> = ({ location, title, children }) => {
+const Layout: FC<Props> = ({ location, children }) => {
 	const { pageDataJson } = useStaticQuery<SocialQuery>(graphql`
 		query {
 			pageDataJson {
@@ -32,34 +32,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 		}
 	`)
 	const { social } = pageDataJson
-	const __PATH_PREFIX__ = ''
-	const rootPath = `${__PATH_PREFIX__}/`
-	const blogPath = `${__PATH_PREFIX__}/blog/`
-	let header
 
-	if (location.pathname === rootPath || location.pathname === blogPath) {
-		header = <Header />
-	} else {
-		header = (
-			<h3
-				style={{
-					fontFamily: `Montserrat, sans-serif`,
-					marginTop: 0,
-				}}
-			>
-				<Link
-					style={{
-						boxShadow: `none`,
-						textDecoration: `none`,
-						color: `inherit`,
-					}}
-					to={`/blog/`}
-				>
-					{title}
-				</Link>
-			</h3>
-		)
-	}
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyles />
@@ -70,7 +43,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 						marginRight: `auto`,
 					}}
 				>
-					{header}
+					<Header location={location} />
 					<main>{children}</main>
 				</div>
 				<StyledFooter>
