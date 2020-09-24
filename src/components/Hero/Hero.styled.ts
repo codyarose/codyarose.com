@@ -6,9 +6,6 @@ const Container = styled(ContainerComponent)`
 	width: 100%;
 	display: flex;
 	align-items: center;
-	${({ theme }) => theme.breakpoints.up('md')} {
-		min-height: calc(100vh - 78px);
-	}
 `
 
 const BioContent = styled.div`
