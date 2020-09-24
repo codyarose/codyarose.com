@@ -1,8 +1,8 @@
-import React, { FC } from "react"
-import { graphql } from "gatsby"
+import React, { FC } from 'react'
+import { graphql } from 'gatsby'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 interface Props {
 	data: { site: { siteMetadata: { title: string } } }
@@ -15,7 +15,7 @@ const NotFoundPage: FC<Props> = ({ data, location }) => {
 	return (
 		<Layout location={location} title={siteTitle}>
 			<SEO title="404: Not Found" />
-			<h1>Test</h1>
+			<h1>Whoops</h1>
 			<p>You just hit a route that doesn&#39;t exist... the sadness.</p>
 		</Layout>
 	)
