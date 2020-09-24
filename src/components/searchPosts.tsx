@@ -1,4 +1,4 @@
-import React, { useState, FC, ReactElement } from 'react'
+import React, { useState, FC } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import { useFlexSearch } from 'react-use-flexsearch'
@@ -52,25 +52,26 @@ const SearchedPosts: FC<{ results: Result[] }> = ({ results }): any => {
 
 interface Post {
 	node: {
-		frontmatter: {
+		id: string
+		frontmatter?: {
 			title: string
 			date: string
 			description: string
 			excerpt: string
 		}
-		fields: {
+		fields?: {
 			slug: string
 		}
-		excerpt: string
+		excerpt?: string
 	}
 }
 
 const AllPosts: FC<{ posts: Post[] }> = ({ posts }) => (
 	<div style={{ margin: '20px 0 40px' }}>
 		{posts.map(({ node }) => {
-			const title = node.frontmatter.title || node.fields.slug
+			const title = node.frontmatter?.title || node.fields?.slug
 			return (
-				<div key={node.fields.slug}>
+				<div key={node.fields?.slug}>
 					<h3
 						style={{
 							marginBottom: rhythm(1 / 4),
@@ -78,16 +79,18 @@ const AllPosts: FC<{ posts: Post[] }> = ({ posts }) => (
 					>
 						<Link
 							style={{ boxShadow: `none` }}
-							to={`/blog${node.fields.slug}`}
+							to={`/blog${node.fields?.slug}`}
 						>
 							{title}
 						</Link>
 					</h3>
-					<small>{node.frontmatter.date}</small>
+					<small>{node.frontmatter?.date}</small>
 					<p
 						dangerouslySetInnerHTML={{
 							__html:
-								node.frontmatter.description || node.excerpt,
+								node.frontmatter?.description ||
+								node.excerpt ||
+								'',
 						}}
 					/>
 				</div>
@@ -99,8 +102,7 @@ const AllPosts: FC<{ posts: Post[] }> = ({ posts }) => (
 interface Props {
 	posts: Post[]
 	localSearchBlog: {
-		index: string
-		store: string
+		[key: string]: string
 	}
 	location: Location
 	navigate: (value: string) => void
