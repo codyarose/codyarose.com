@@ -51,7 +51,7 @@ const Hero: FC<Props> = ({ portrait }) => {
 
 	return (
 		<Styled.Container>
-			<Content>
+			<Content grid={true}>
 				<Styled.BioContent>
 					<Styled.Title>{name}</Styled.Title>
 					<Hr />

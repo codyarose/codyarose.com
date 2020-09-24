@@ -6,6 +6,8 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/shared/button'
 import SearchPosts from '../components/searchPosts'
+import { Content } from '../components/shared/Content'
+import { Container } from '../components/shared/Container'
 
 interface AllMdx {
 	edges: { node: { id: string } }[]
@@ -34,17 +36,21 @@ const Blog: FC<Props> = ({ data, navigate, location }) => {
 
 	return (
 		<Layout location={location} title={siteTitle}>
-			<SEO title="All posts" />
-			<Bio />
-			<SearchPosts
-				posts={posts}
-				localSearchBlog={localSearchBlog}
-				navigate={navigate}
-				location={location}
-			/>
-			<Link to="/">
-				<Button marginTop="85px">Go Home</Button>
-			</Link>
+			<Container>
+				<Content>
+					<SEO title="All posts" />
+					<Bio />
+					<SearchPosts
+						posts={posts}
+						localSearchBlog={localSearchBlog}
+						navigate={navigate}
+						location={location}
+					/>
+					<Link to="/">
+						<Button marginTop="85px">Go Home</Button>
+					</Link>
+				</Content>
+			</Container>
 		</Layout>
 	)
 }

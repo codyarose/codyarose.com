@@ -41,7 +41,7 @@ const Projects: FC = () => {
 
 	return (
 		<Container id="projects">
-			<Content>
+			<Content grid={true}>
 				<Styled.Title>
 					<Styled.H2>
 						<Text.Spaced>Projects</Text.Spaced>

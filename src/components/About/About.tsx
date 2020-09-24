@@ -24,7 +24,7 @@ const About: FC = () => {
 	const { about } = pageDataJson
 	return (
 		<Container id="about">
-			<Content>
+			<Content grid={true}>
 				<div>
 					<Text.Spaced>About</Text.Spaced>
 					<Hr />
