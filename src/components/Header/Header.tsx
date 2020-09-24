@@ -1,14 +1,44 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
+
+interface HeaderQuery {
+	pageDataJson: {
+		header: {
+			links: {
+				title: string
+				url: string
+			}[]
+		}
+	}
+}
 
 const Header: FC = () => {
+	const { pageDataJson } = useStaticQuery<HeaderQuery>(graphql`
+		query {
+			pageDataJson {
+				header {
+					links {
+						title
+						url
+					}
+				}
+			}
+		}
+	`)
+
+	const {
+		header: { links },
+	} = pageDataJson
+
 	return (
 		<StyledHeader>
 			<StyledContent>
-				<Link to="/blog">Blog</Link>
-				<Link to="#projects">Projects</Link>
-				<Link to="#about">About</Link>
+				{links.map((link, i) => (
+					<Link key={i} to={link.url}>
+						{link.title}
+					</Link>
+				))}
 			</StyledContent>
 		</StyledHeader>
 	)

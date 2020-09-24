@@ -16,6 +16,7 @@ module.exports = {
 		`gatsby-plugin-sharp`,
 		`gatsby-plugin-offline`,
 		`gatsby-plugin-react-helmet`,
+		`gatsby-transformer-json`,
 		{
 			resolve: 'gatsby-plugin-local-search',
 			options: {
@@ -81,7 +82,13 @@ module.exports = {
 				name: `assets`,
 			},
 		},
-
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				path: `${__dirname}/content/pageData`,
+				name: `pageData`,
+			},
+		},
 		{
 			resolve: `gatsby-plugin-mdx`,
 			options: {

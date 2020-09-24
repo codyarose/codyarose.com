@@ -3,12 +3,35 @@ import React, { FC, useState, MouseEvent } from 'react'
 import { Hr } from '../shared/Hr'
 import { Text } from '../shared/Text'
 import Fade from '../shared/Fade'
-import { projects } from './data'
 import { Styled } from './Projects.styled'
 import { Container } from '../shared/Container'
 import { Content } from '../shared/Content'
+import { graphql, useStaticQuery } from 'gatsby'
+
+interface ProjectsQuery {
+	pageDataJson: {
+		projects: {
+			title: string
+			githubSlug: string
+			description: string
+		}[]
+	}
+}
 
 const Projects: FC = () => {
+	const { pageDataJson } = useStaticQuery<ProjectsQuery>(graphql`
+		query {
+			pageDataJson {
+				projects {
+					title
+					githubSlug
+					description
+				}
+			}
+		}
+	`)
+	const { projects } = pageDataJson
+
 	const [currentIndex, setCurrentIndex] = useState(0)
 
 	const handleHover = (e: MouseEvent<HTMLLIElement>) => {
@@ -29,7 +52,7 @@ const Projects: FC = () => {
 					{projects.map((project, i) => (
 						<Styled.Description key={i}>
 							<Fade show={currentIndex === i}>
-								<p>{project.desc}</p>
+								<p>{project.description}</p>
 							</Fade>
 						</Styled.Description>
 					))}
