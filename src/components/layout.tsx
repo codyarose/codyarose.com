@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import styled, { ThemeProvider } from 'styled-components'
 
 import theme from '../theme'
@@ -11,7 +11,27 @@ interface Props {
 	title: string
 }
 
+interface SocialQuery {
+	pageDataJson: {
+		social: {
+			title: string
+			url: string
+		}[]
+	}
+}
+
 const Layout: FC<Props> = ({ location, title, children }) => {
+	const { pageDataJson } = useStaticQuery<SocialQuery>(graphql`
+		query {
+			pageDataJson {
+				social {
+					title
+					url
+				}
+			}
+		}
+	`)
+	const { social } = pageDataJson
 	const __PATH_PREFIX__ = ''
 	const rootPath = `${__PATH_PREFIX__}/`
 	const blogPath = `${__PATH_PREFIX__}/blog/`
@@ -55,16 +75,11 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 				</div>
 				<StyledFooter>
 					<StyledFooterContent>
-						<a href="https://github.com/codyarose" target="_blank">
-							github
-						</a>
-						<a
-							href="https://www.linkedin.com/in/codyarose/"
-							target="_blank"
-						>
-							linkedin
-						</a>
-						<a href="mailto:crose992@gmail.com">email</a>
+						{social.map((link, i) => (
+							<a key={i} href={link.url} target="_blank">
+								{link.title}
+							</a>
+						))}
 					</StyledFooterContent>
 				</StyledFooter>
 			</Wrapper>

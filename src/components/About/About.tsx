@@ -5,8 +5,23 @@ import { Container } from '../shared/Container'
 import { Content } from '../shared/Content'
 import { Text } from '../shared/Text'
 import { Hr } from '../shared/Hr'
+import { graphql, useStaticQuery } from 'gatsby'
+
+interface AboutQuery {
+	pageDataJson: {
+		about: string[]
+	}
+}
 
 const About: FC = () => {
+	const { pageDataJson } = useStaticQuery<AboutQuery>(graphql`
+		query {
+			pageDataJson {
+				about
+			}
+		}
+	`)
+	const { about } = pageDataJson
 	return (
 		<Container id="about">
 			<Content>
@@ -15,16 +30,9 @@ const About: FC = () => {
 					<Hr />
 				</div>
 				<StyledTextSection>
-					<StyledText>
-						I'm a Front End Developer in Austin, TX interested in
-						working (remotely) on challenging projects using React
-						and Typescript.
-					</StyledText>
-					<StyledText>
-						I have several years of agency experience building
-						websites from design mockups, but my knowledge of React
-						is all self-taught.
-					</StyledText>
+					{about.map((item, i) => (
+						<StyledText key={i}>{item}</StyledText>
+					))}
 				</StyledTextSection>
 			</Content>
 		</Container>

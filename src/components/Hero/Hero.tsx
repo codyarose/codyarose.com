@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import Img from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import { Content } from '../shared/Content'
 import Styled from './Hero.styled'
@@ -7,39 +8,67 @@ import { Hr } from '../shared/Hr'
 import { Text } from '../shared/Text'
 
 interface Props {
-	portrait: any
+	portrait: FluidObject | FluidObject[]
+}
+
+interface HeroQuery {
+	pageDataJson: {
+		hero: {
+			name: string
+			position: string
+			intro: string
+		}
+		social: {
+			title: string
+			url: string
+		}[]
+	}
 }
 
 const Hero: FC<Props> = ({ portrait }) => {
+	const { pageDataJson } = useStaticQuery<HeroQuery>(
+		graphql`
+			query {
+				pageDataJson {
+					hero {
+						name
+						position
+						intro
+					}
+					social {
+						title
+						url
+					}
+				}
+			}
+		`
+	)
+
+	const {
+		hero: { name, position, intro },
+		social,
+	} = pageDataJson
+
 	return (
 		<Styled.Container>
 			<Content>
 				<Styled.BioContent>
-					<Styled.Title>Cody Rose</Styled.Title>
+					<Styled.Title>{name}</Styled.Title>
 					<Hr />
-					<Text.Spaced>Front End Developer</Text.Spaced>
+					<Text.Spaced>{position}</Text.Spaced>
 					<br />
-					<Text.Spaced>
-						I'm an Austin based developer that loves building
-						beautiful, challenging UI with React and Typescript.
-					</Text.Spaced>
+					<Text.Spaced>{intro}</Text.Spaced>
 					<Hr />
 					<Styled.SocialIcons>
-						<Styled.SocialLink
-							href="https://github.com/codyarose"
-							target="_blank"
-						>
-							github
-						</Styled.SocialLink>
-						<Styled.SocialLink
-							href="https://www.linkedin.com/in/codyarose/"
-							target="_blank"
-						>
-							linkedin
-						</Styled.SocialLink>
-						<Styled.SocialLink href="mailto:crose992@gmail.com">
-							email
-						</Styled.SocialLink>
+						{social.map((link, i) => (
+							<Styled.SocialLink
+								key={i}
+								href={link.url}
+								target="_blank"
+							>
+								{link.title}
+							</Styled.SocialLink>
+						))}
 					</Styled.SocialIcons>
 				</Styled.BioContent>
 				<Styled.ImageContainer>
