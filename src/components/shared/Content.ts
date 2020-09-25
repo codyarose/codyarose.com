@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 
-export const Content = styled.div<{ grid?: boolean }>`
+export const Content = styled.div<{ grid?: boolean; compact?: boolean }>`
 	width: 100%;
 	max-width: 1120px;
+	max-width: ${({ compact }) => (compact ? 800 : 1120)}px;
 	margin: 0 auto;
 	padding: ${({ theme }) => theme.spacing(0, 5)};
 	${({ theme }) => theme.breakpoints.down('sm')} {
 		max-width: 560px;
-		padding: ${({ theme }) => theme.spacing(0, 2)};
+		padding: 0 20px;
 	}
 	${({ grid, theme }) =>
 		grid &&
