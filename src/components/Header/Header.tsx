@@ -35,7 +35,7 @@ const Header: FC<Props> = ({ location }) => {
 		}
 	`)
 	const __PATH_PREFIX__ = ''
-	const blogPath = `${__PATH_PREFIX__}/blog/`
+	const rootPath = `${__PATH_PREFIX__}/`
 	const isMobile = useMediaQuery({ maxWidth: theme.breakpoints.values.sm })
 
 	const {
@@ -63,7 +63,7 @@ const Header: FC<Props> = ({ location }) => {
 	return (
 		<StyledHeader>
 			<StyledContent>
-				{location.pathname === blogPath && (
+				{location.pathname !== rootPath && (
 					<StyledTitleLink to="/">Cody Rose</StyledTitleLink>
 				)}
 				{isMobile && (
