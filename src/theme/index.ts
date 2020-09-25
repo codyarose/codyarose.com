@@ -6,6 +6,7 @@ const theme = {
 	colors: {
 		black: '#0a0500',
 		white: '#fff',
+		accent: '#f694c1',
 	},
 	breakpoints,
 	spacing,
