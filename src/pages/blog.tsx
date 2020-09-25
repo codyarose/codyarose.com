@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -35,7 +34,7 @@ const Blog: FC<Props> = ({ data, navigate, location }) => {
 
 	return (
 		<Layout location={location} title={siteTitle}>
-			<StyledContainer>
+			<Container compact={true}>
 				<Content>
 					<SEO title="Blog" />
 					<SearchPosts
@@ -45,21 +44,12 @@ const Blog: FC<Props> = ({ data, navigate, location }) => {
 						location={location}
 					/>
 				</Content>
-			</StyledContainer>
+			</Container>
 		</Layout>
 	)
 }
 
 export default Blog
-
-const StyledContainer = styled(Container)`
-	&& {
-		padding: ${({ theme }) => theme.spacing(3, 0)};
-		${({ theme }) => theme.breakpoints.down('xs')} {
-			padding: ${({ theme }) => theme.spacing(1, 0)};
-		}
-	}
-`
 
 export const pageQuery = graphql`
 	query {
