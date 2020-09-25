@@ -27,7 +27,6 @@ export default BlogItem
 const StyledLink = styled(Link)`
 	display: block;
 	color: inherit;
-	text-decoration: none;
 `
 
 const StyledTitle = styled.h3`

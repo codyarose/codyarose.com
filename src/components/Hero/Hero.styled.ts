@@ -45,7 +45,6 @@ const SocialIcons = styled.div`
 const SocialLink = styled.a`
 	position: relative;
 	letter-spacing: 2px;
-	text-decoration: none;
 	padding: 0 0.25rem;
 	opacity: 0.75;
 	transition: opacity 0.2s ease-in-out;

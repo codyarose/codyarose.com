@@ -98,9 +98,6 @@ const ProjectItem = styled.li<ProjectItemProps>`
 			pointer-events: none;
 		}
 	}
-	a {
-		text-decoration: none;
-	}
 `
 
 export const Styled = {

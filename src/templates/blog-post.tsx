@@ -79,7 +79,6 @@ const StyledBody = styled.div`
 
 	a {
 		color: ${({ theme }) => theme.colors.accent};
-		text-decoration: none;
 	}
 	h2,
 	h3 {
