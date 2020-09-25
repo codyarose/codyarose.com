@@ -39,10 +39,12 @@ const BlogPostTemplate: FC<Props> = ({ data, location }) => {
 				description={post.frontmatter.description || post.excerpt}
 			/>
 			<Container compact={true}>
-				<Content>
+				<Content compact={true}>
 					<StyledTitle>{post.frontmatter.title}</StyledTitle>
 					<StyledDate>{post.frontmatter.date}</StyledDate>
-					<MDXRenderer>{post.body}</MDXRenderer>
+					<StyledBody>
+						<MDXRenderer>{post.body}</MDXRenderer>
+					</StyledBody>
 					<Hr />
 					<Bio />
 				</Content>
@@ -62,6 +64,27 @@ const StyledDate = styled.p`
 	text-align: center;
 	letter-spacing: 4px;
 	font-size: 0.75rem;
+`
+
+const StyledBody = styled.div`
+	padding: ${({ theme }) => theme.spacing(3, 0)};
+	font-size: 18px;
+	line-height: 1.7;
+	${({ theme }) => theme.breakpoints.down('xs')} {
+		padding: ${({ theme }) => theme.spacing(1, 0)};
+	}
+
+	a {
+		color: ${({ theme }) => theme.colors.accent};
+		text-decoration: none;
+	}
+	h2,
+	h3 {
+		margin: 2em 0 1em;
+	}
+	h2 {
+		font-size: 1.5em;
+	}
 `
 
 export const pageQuery = graphql`
