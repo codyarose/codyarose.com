@@ -55,7 +55,6 @@ const Header: FC<Props> = ({ location }) => {
 		if (isMobile) {
 			document.body.style.height = isOpen ? '100vh' : ''
 			document.body.style.overflowY = isOpen ? 'hidden' : ''
-			document.body.style.position = isOpen ? 'fixed' : ''
 		}
 	}, [isOpen])
 

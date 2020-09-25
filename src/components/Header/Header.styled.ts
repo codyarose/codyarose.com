@@ -10,7 +10,6 @@ const Header = styled.header`
 	font-size: 0.75rem;
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		font-size: 1.5rem;
-		padding: ${({ theme }) => theme.spacing(1, 0)};
 	}
 	a {
 		text-decoration: none;
@@ -51,7 +50,7 @@ const Links = styled.div<{ open: boolean }>`
 		position: absolute;
 		top: 100%;
 		left: 0;
-		width: 100%;
+		right: 0;
 		height: 100vh;
 		background-color: ${({ theme }) => theme.colors.black};
 		grid-template-rows: repeat(auto-fit, minmax(1px, min-content));
