@@ -173,5 +173,6 @@ const StyledBlogList = styled.div`
 	}
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		padding-top: ${({ theme }) => theme.spacing(2)};
+		row-gap: ${({ theme }) => theme.spacing(2)};
 	}
 `
