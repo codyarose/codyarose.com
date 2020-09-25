@@ -1,15 +1,10 @@
 {
 	"header": {
 		"links": [
-			{ "title": "Blog", "url": "/blog" },
-			{ "title": "Projects", "url": "#projects" },
-			{ "title": "About", "url": "#about" }
+			{ "title": "Blog", "url": "/blog/" },
+			{ "title": "Projects", "url": "/#projects" },
+			{ "title": "About", "url": "/#about" }
 		]
-	},
-	"hero": {
-		"name": "Cody Rose",
-		"position": "Front End Developer",
-		"intro": "I'm an Austin based developer that loves building beautiful, challenging UI with React and Typescript."
 	},
 	"social": [
 		{ "title": "github", "url": "https://github.com/codyarose" },
@@ -19,25 +14,32 @@
 		},
 		{ "title": "email", "url": "mailto:crose992@gmail.com" }
 	],
-	"projects": [
-		{
-			"title": "Budget App",
-			"githubSlug": "budget-app",
-			"description": "A full stack expense tracking app built with React, Typescript, Redux, and Firebase."
+	"home": {
+		"hero": {
+			"name": "Cody Rose",
+			"position": "Front End Developer",
+			"intro": "I'm an Austin based developer that loves building beautiful, challenging UI with React and Typescript."
 		},
-		{
-			"title": "BotW Cooking",
-			"githubSlug": "botw-cooking",
-			"description": "An app for the Breath of the Wild cooking system built with React and Typescript."
-		},
-		{
-			"title": "Signature Builder",
-			"githubSlug": "react-email-signature-builder",
-			"description": "An email signature builder built with React."
-		}
-	],
-	"about": [
-		"I'm a Front End Developer in Austin, TX interested in working (remotely) on challenging projects using React and Typescript.",
-		"I have several years of agency experience building websites from design mockups, but my knowledge of React is all self-taught."
-	]
+		"projects": [
+			{
+				"title": "Budget App",
+				"githubSlug": "budget-app",
+				"description": "A full stack expense tracking app built with React, Typescript, Redux, and Firebase."
+			},
+			{
+				"title": "BotW Cooking",
+				"githubSlug": "botw-cooking",
+				"description": "An app for the Breath of the Wild cooking system built with React and Typescript."
+			},
+			{
+				"title": "Signature Builder",
+				"githubSlug": "react-email-signature-builder",
+				"description": "An email signature builder built with React."
+			}
+		],
+		"about": [
+			"I'm a Front End Developer in Austin, TX interested in working (remotely) on challenging projects using React and Typescript.",
+			"I have several years of agency experience building websites from design mockups, but my knowledge of React is all self-taught."
+		]
+	}
 }

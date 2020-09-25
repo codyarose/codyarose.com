@@ -13,10 +13,12 @@ interface Props {
 
 interface HeroQuery {
 	pageDataJson: {
-		hero: {
-			name: string
-			position: string
-			intro: string
+		home: {
+			hero: {
+				name: string
+				position: string
+				intro: string
+			}
 		}
 		social: {
 			title: string
@@ -30,10 +32,12 @@ const Hero: FC<Props> = ({ portrait }) => {
 		graphql`
 			query {
 				pageDataJson {
-					hero {
-						name
-						position
-						intro
+					home {
+						hero {
+							name
+							position
+							intro
+						}
 					}
 					social {
 						title
@@ -45,13 +49,15 @@ const Hero: FC<Props> = ({ portrait }) => {
 	)
 
 	const {
-		hero: { name, position, intro },
+		home: {
+			hero: { name, position, intro },
+		},
 		social,
 	} = pageDataJson
 
 	return (
 		<Styled.Container>
-			<Content>
+			<Content grid={true}>
 				<Styled.BioContent>
 					<Styled.Title>{name}</Styled.Title>
 					<Hr />

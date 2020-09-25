@@ -98,10 +98,6 @@ const ProjectItem = styled.li<ProjectItemProps>`
 			pointer-events: none;
 		}
 	}
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
 `
 
 export const Styled = {

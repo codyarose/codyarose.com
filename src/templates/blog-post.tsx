@@ -1,11 +1,14 @@
 import React, { FC } from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import styled from 'styled-components'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { rhythm, scale } from '../utils/typography'
+import { Container } from '../components/shared/Container'
+import { Content } from '../components/shared/Content'
+import { Hr } from '../components/shared/Hr'
 
 interface Props {
 	data: {
@@ -22,23 +25,12 @@ interface Props {
 			}
 		}
 	}
-	pageContext: {
-		previous: {
-			fields: { slug: string }
-			frontmatter: { title: string }
-		}
-		next: {
-			fields: { slug: string }
-			frontmatter: { title: string }
-		}
-	}
 	location: Location
 }
 
-const BlogPostTemplate: FC<Props> = ({ data, pageContext, location }) => {
+const BlogPostTemplate: FC<Props> = ({ data, location }) => {
 	const post = data.mdx
 	const siteTitle = data.site.siteMetadata.title
-	const { previous, next } = pageContext
 
 	return (
 		<Layout location={location} title={siteTitle}>
@@ -46,54 +38,60 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext, location }) => {
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
 			/>
-			<h1>{post.frontmatter.title}</h1>
-			<p
-				style={{
-					...scale(-1 / 5),
-					display: `block`,
-					marginBottom: rhythm(1),
-					marginTop: rhythm(-1),
-				}}
-			>
-				{post.frontmatter.date}
-			</p>
-			<MDXRenderer>{post.body}</MDXRenderer>
-			<hr
-				style={{
-					marginBottom: rhythm(1),
-				}}
-			/>
-			<Bio />
-
-			<ul
-				style={{
-					display: `flex`,
-					flexWrap: `wrap`,
-					justifyContent: `space-between`,
-					listStyle: `none`,
-					padding: 0,
-				}}
-			>
-				<li>
-					{previous && (
-						<Link to={`/blog${previous.fields.slug}`} rel="prev">
-							← {previous.frontmatter.title}
-						</Link>
-					)}
-				</li>
-				<li>
-					{next && (
-						<Link to={`/blog${next.fields.slug}`} rel="next">
-							{next.frontmatter.title} →
-						</Link>
-					)}
-				</li>
-			</ul>
+			<Container compact={true}>
+				<StyledContent compact={true}>
+					<StyledTitle>{post.frontmatter.title}</StyledTitle>
+					<StyledDate>{post.frontmatter.date}</StyledDate>
+					<StyledBody>
+						<MDXRenderer>{post.body}</MDXRenderer>
+					</StyledBody>
+					<StyledHr />
+					<Bio />
+				</StyledContent>
+			</Container>
 		</Layout>
 	)
 }
 
 export default BlogPostTemplate
+
+const StyledContent = styled(Content)`
+	font-size: 18px;
+	line-height: 1.7;
+`
+
+const StyledTitle = styled.h1`
+	text-align: center;
+`
+
+const StyledDate = styled.p`
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 4px;
+	font-size: 0.75rem;
+`
+
+const StyledBody = styled.div`
+	padding-top: ${({ theme }) => theme.spacing(3)};
+	${({ theme }) => theme.breakpoints.down('xs')} {
+		padding: ${({ theme }) => theme.spacing(1, 0)};
+	}
+
+	a {
+		color: ${({ theme }) => theme.colors.accent};
+	}
+	h2,
+	h3 {
+		margin: 2em 0 1em;
+	}
+	h2 {
+		font-size: 1.5em;
+	}
+`
+
+const StyledHr = styled(Hr)`
+	margin: ${({ theme }) => theme.spacing(4, 0)};
+`
 
 export const pageQuery = graphql`
 	query BlogPostBySlug($slug: String!) {

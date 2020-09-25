@@ -1,51 +1,44 @@
-import React, { FC } from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import styled from "styled-components"
-
-import { rhythm } from "../utils/typography"
+import React, { FC } from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import Image from 'gatsby-image'
+import styled from 'styled-components'
 
 const Bio: FC = () => {
 	return (
 		<StaticQuery
 			query={bioQuery}
 			render={data => {
-				const { author, social } = data.site.siteMetadata
+				const { author } = data.site.siteMetadata
 				return (
-					<Container>
+					<StyledBio>
 						<Image
 							fixed={data.avatar.childImageSharp.fixed}
 							alt={author}
-							style={{
-								marginRight: rhythm(1 / 2),
-								marginBottom: 0,
-								minWidth: 50,
-								borderRadius: `100%`,
-							}}
-							imgStyle={{
-								borderRadius: `50%`,
-							}}
 						/>
 						<p>
-							Written by <strong>{author}</strong>, a framework
-							built upon the React library.
-							{` `}
-							<a href={`https://twitter.com/${social.twitter}`}>
-								Follow me on Twitter
-							</a>
+							Hey! I'm {author}, an Austin based developer that
+							loves building beautiful, challenging UI with React
+							and Typescript.
 						</p>
-					</Container>
+					</StyledBio>
 				)
 			}}
 		/>
 	)
 }
 
+const StyledBio = styled.div`
+	display: grid;
+	grid-template-columns: min-content auto;
+	column-gap: 2rem;
+	align-items: center;
+`
+
 const bioQuery = graphql`
 	query BioQuery {
-		avatar: file(absolutePath: { regex: "/gatsby-icon.png/" }) {
+		avatar: file(relativePath: { eq: "portrait.jpg" }) {
 			childImageSharp {
-				fixed(width: 50, height: 50) {
+				fixed(width: 100, quality: 100) {
 					...GatsbyImageSharpFixed
 				}
 			}
@@ -53,16 +46,9 @@ const bioQuery = graphql`
 		site {
 			siteMetadata {
 				author
-				social {
-					twitter
-				}
 			}
 		}
 	}
-`
-
-const Container = styled.div`
-	display: flex;
 `
 
 export default Bio

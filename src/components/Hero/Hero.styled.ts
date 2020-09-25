@@ -6,9 +6,6 @@ const Container = styled(ContainerComponent)`
 	width: 100%;
 	display: flex;
 	align-items: center;
-	${({ theme }) => theme.breakpoints.up('md')} {
-		min-height: calc(100vh - 78px);
-	}
 `
 
 const BioContent = styled.div`
@@ -47,9 +44,7 @@ const SocialIcons = styled.div`
 `
 const SocialLink = styled.a`
 	position: relative;
-	color: inherit;
 	letter-spacing: 2px;
-	text-decoration: none;
 	padding: 0 0.25rem;
 	opacity: 0.75;
 	transition: opacity 0.2s ease-in-out;

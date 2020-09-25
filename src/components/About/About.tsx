@@ -9,7 +9,9 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 interface AboutQuery {
 	pageDataJson: {
-		about: string[]
+		home: {
+			about: string[]
+		}
 	}
 }
 
@@ -17,14 +19,18 @@ const About: FC = () => {
 	const { pageDataJson } = useStaticQuery<AboutQuery>(graphql`
 		query {
 			pageDataJson {
-				about
+				home {
+					about
+				}
 			}
 		}
 	`)
-	const { about } = pageDataJson
+	const {
+		home: { about },
+	} = pageDataJson
 	return (
 		<Container id="about">
-			<Content>
+			<Content grid={true}>
 				<div>
 					<Text.Spaced>About</Text.Spaced>
 					<Hr />

@@ -18,6 +18,10 @@ const GlobalStyles = createGlobalStyle`
 		background-color: ${({ theme }) => theme.colors.black};
 		color: ${({ theme }) => theme.colors.white};
 	}
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 `
 
 export default GlobalStyles
