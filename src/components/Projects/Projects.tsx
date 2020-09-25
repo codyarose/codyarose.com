@@ -10,11 +10,13 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 interface ProjectsQuery {
 	pageDataJson: {
-		projects: {
-			title: string
-			githubSlug: string
-			description: string
-		}[]
+		home: {
+			projects: {
+				title: string
+				githubSlug: string
+				description: string
+			}[]
+		}
 	}
 }
 
@@ -22,15 +24,19 @@ const Projects: FC = () => {
 	const { pageDataJson } = useStaticQuery<ProjectsQuery>(graphql`
 		query {
 			pageDataJson {
-				projects {
-					title
-					githubSlug
-					description
+				home {
+					projects {
+						title
+						githubSlug
+						description
+					}
 				}
 			}
 		}
 	`)
-	const { projects } = pageDataJson
+	const {
+		home: { projects },
+	} = pageDataJson
 
 	const [currentIndex, setCurrentIndex] = useState(0)
 
