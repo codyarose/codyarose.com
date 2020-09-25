@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, Event } from 'react'
+import React, { FC, MouseEvent, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { useMediaQuery } from 'react-responsive'
@@ -47,15 +47,17 @@ const Header: FC<Props> = ({ location }) => {
 	const toggleOpen = () => {
 		setIsOpen(!isOpen)
 	}
-	const clickCapture = (e: Event<HTMLDivElement>) => {
+	const clickCapture = (e: MouseEvent<HTMLDivElement>) => {
 		const { target, currentTarget } = e
 		target !== currentTarget && setIsOpen(!isOpen)
 	}
 
 	useEffect(() => {
-		document.body.style.height = isOpen ? '100vh' : ''
-		document.body.style.overflowY = isOpen ? 'hidden' : ''
-		document.body.style.position = isOpen ? 'fixed' : ''
+		if (isMobile) {
+			document.body.style.height = isOpen ? '100vh' : ''
+			document.body.style.overflowY = isOpen ? 'hidden' : ''
+			document.body.style.position = isOpen ? 'fixed' : ''
+		}
 	}, [isOpen])
 
 	return (
@@ -88,6 +90,7 @@ const StyledHeader = styled.header`
 	font-size: 0.75rem;
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		font-size: 1.5rem;
+		padding: ${({ theme }) => theme.spacing(1, 0)};
 	}
 	a {
 		color: inherit;
@@ -131,7 +134,7 @@ const StyledLinks = styled.div<{ open: boolean }>`
 		left: 0;
 		width: 100%;
 		height: 100vh;
-		background-color: rgba(0, 0, 0, 0.75);
+		background-color: ${({ theme }) => theme.colors.black};
 		grid-template-rows: repeat(auto-fit, minmax(1px, min-content));
 		row-gap: ${({ theme }) => theme.spacing(1)};
 		justify-content: center;
@@ -140,6 +143,7 @@ const StyledLinks = styled.div<{ open: boolean }>`
 		opacity: ${({ open }) => (open ? 1 : 0)};
 		transition: opacity 0.5s ease-out;
 		z-index: 1;
+		pointer-events: ${({ open }) => (open ? 'all' : 'none')};
 	}
 
 	.active {
@@ -166,6 +170,7 @@ const MobileToggle = styled.button<{ open: boolean }>`
 	border: none;
 	box-shadow: none;
 	margin-left: auto;
+	cursor: pointer;
 	&:focus {
 		outline: none;
 	}
@@ -190,7 +195,6 @@ const MobileToggle = styled.button<{ open: boolean }>`
 				: `rotate(0) translateY(0)`};
 	}
 	&::after {
-		/* bottom: var(--line-spacing); */
 		bottom: ${({ open }) => (open ? `50%` : `var(--line-spacing)`)};
 		transform: ${({ open }) =>
 			open
