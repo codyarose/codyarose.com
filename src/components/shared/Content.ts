@@ -1,19 +1,10 @@
 import styled from 'styled-components'
 
-interface Props {
-	grid?: boolean
-}
-
-export const Content = styled.div<Props>`
+export const Content = styled.div<{ grid?: boolean }>`
 	width: 100%;
 	max-width: 1120px;
 	margin: 0 auto;
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		padding: ${({ theme }) => theme.spacing(0, 5)};
-	}
-	${({ theme }) => theme.breakpoints.down('lg')} {
-		padding: 0 4vw;
-	}
+	padding: ${({ theme }) => theme.spacing(0, 5)};
 	${({ theme }) => theme.breakpoints.down('sm')} {
 		max-width: 560px;
 		padding: ${({ theme }) => theme.spacing(0, 2)};
