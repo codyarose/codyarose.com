@@ -44,7 +44,6 @@ const SocialIcons = styled.div`
 `
 const SocialLink = styled.a`
 	position: relative;
-	color: inherit;
 	letter-spacing: 2px;
 	text-decoration: none;
 	padding: 0 0.25rem;

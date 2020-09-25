@@ -67,7 +67,6 @@ const Wrapper = styled.div`
 const StyledFooter = styled.footer`
 	padding: ${({ theme }) => theme.spacing(2)};
 	a {
-		color: inherit;
 		text-decoration: none;
 		opacity: 0.75;
 		transition: opacity 0.2s ease-out;

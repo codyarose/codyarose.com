@@ -99,7 +99,6 @@ const ProjectItem = styled.li<ProjectItemProps>`
 		}
 	}
 	a {
-		color: inherit;
 		text-decoration: none;
 	}
 `

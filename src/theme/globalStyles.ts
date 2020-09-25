@@ -18,6 +18,9 @@ const GlobalStyles = createGlobalStyle`
 		background-color: ${({ theme }) => theme.colors.black};
 		color: ${({ theme }) => theme.colors.white};
 	}
+	a {
+		color: inherit;
+	}
 `
 
 export default GlobalStyles
