@@ -22,6 +22,9 @@ const GlobalStyles = createGlobalStyle`
 		color: inherit;
 		text-decoration: none;
 	}
+	::selection {
+		background: ${({ theme }) => theme.colors.accent};
+	}
 `
 
 export default GlobalStyles
