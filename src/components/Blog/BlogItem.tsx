@@ -37,6 +37,9 @@ const StyledTitle = styled.h3`
 	letter-spacing: -0.06em;
 	margin-bottom: ${({ theme }) => theme.spacing(1)};
 	border-bottom: 1px solid currentColor;
+	${({ theme }) => theme.breakpoints.down('xs')} {
+		font-size: 2rem;
+	}
 `
 
 const StyledExcerpt = styled.p`

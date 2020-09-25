@@ -1,13 +1,11 @@
 import React, { useState, FC } from 'react'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
 import { useFlexSearch } from 'react-use-flexsearch'
 import * as queryString from 'query-string'
 
-import { rhythm } from '../utils/typography'
+import BlogItem from './Blog/BlogItem'
 
 interface Result {
-	date: string
 	title: string
 	slug: string
 	description: string
@@ -17,31 +15,7 @@ interface Result {
 const SearchedPosts: FC<{ results: Result[] }> = ({ results }): any => {
 	return results.length > 0 ? (
 		results.map(node => {
-			const date = node.date
-			const title = node.title || node.slug
-			const description = node.description
-			const excerpt = node.excerpt
-			const slug = node.slug
-
-			return (
-				<div key={slug}>
-					<h3
-						style={{
-							marginBottom: rhythm(1 / 4),
-						}}
-					>
-						<Link style={{ boxShadow: `none` }} to={`/blog${slug}`}>
-							{title}
-						</Link>
-					</h3>
-					<small>{date}</small>
-					<p
-						dangerouslySetInnerHTML={{
-							__html: description || excerpt,
-						}}
-					/>
-				</div>
-			)
+			return <BlogItem key={node.slug} {...node} />
 		})
 	) : (
 		<p style={{ textAlign: 'center' }}>
@@ -55,7 +29,6 @@ interface Post {
 		id: string
 		frontmatter?: {
 			title: string
-			date: string
 			description: string
 			excerpt: string
 		}
@@ -67,36 +40,21 @@ interface Post {
 }
 
 const AllPosts: FC<{ posts: Post[] }> = ({ posts }) => (
-	<div style={{ margin: '20px 0 40px' }}>
+	<>
 		{posts.map(({ node }) => {
-			const title = node.frontmatter?.title || node.fields?.slug
+			const title = node.frontmatter?.title || node.fields?.slug || ''
+			const slug = node.fields?.slug || ''
 			return (
-				<div key={node.fields?.slug}>
-					<h3
-						style={{
-							marginBottom: rhythm(1 / 4),
-						}}
-					>
-						<Link
-							style={{ boxShadow: `none` }}
-							to={`/blog${node.fields?.slug}`}
-						>
-							{title}
-						</Link>
-					</h3>
-					<small>{node.frontmatter?.date}</small>
-					<p
-						dangerouslySetInnerHTML={{
-							__html:
-								node.frontmatter?.description ||
-								node.excerpt ||
-								'',
-						}}
-					/>
-				</div>
+				<BlogItem
+					key={node.fields?.slug}
+					title={title}
+					slug={slug}
+					description={node.frontmatter?.description || ''}
+					excerpt={node.excerpt || ''}
+				/>
 			)
 		})}
-	</div>
+	</>
 )
 
 interface Props {
@@ -136,7 +94,7 @@ const SearchPosts: FC<Props> = ({
 				<input
 					id="search"
 					type="search"
-					placeholder="Search all posts"
+					placeholder="Search posts"
 					value={query}
 					onChange={e => {
 						navigate(
@@ -148,11 +106,13 @@ const SearchPosts: FC<Props> = ({
 					}}
 				/>
 			</SearchBar>
-			{query ? (
-				<SearchedPosts results={results} />
-			) : (
-				<AllPosts posts={posts} />
-			)}
+			<StyledBlogList>
+				{query ? (
+					<SearchedPosts results={results} />
+				) : (
+					<AllPosts posts={posts} />
+				)}
+			</StyledBlogList>
 		</>
 	)
 }
@@ -160,36 +120,58 @@ const SearchPosts: FC<Props> = ({
 export default SearchPosts
 
 const SearchBar = styled.div`
-	display: flex;
-	border: 1px solid #dfe1e5;
-	border-radius: 10px;
-	margin: 0 auto ${rhythm(1)};
 	width: 100%;
+	max-width: 560px;
 	height: 3rem;
-	background: #fdfdfd;
+	display: grid;
+	grid-template-columns: 20px auto;
+	align-items: center;
+	column-gap: ${({ theme }) => theme.spacing(1)};
+	color: inherit;
+	border-bottom: 1px solid currentColor;
+	margin: ${({ theme }) => theme.spacing(0, 'auto', 2)};
+	${({ theme }) => theme.breakpoints.up('sm')} {
+		padding: ${({ theme }) => theme.spacing(0, 1)};
+	}
 
 	svg {
-		margin: auto 1rem;
 		height: 20px;
 		width: 20px;
-		color: #9aa0a6;
-		fill: #9aa0a6;
+		color: currentColor;
+		fill: currentColor;
 	}
 
 	input {
-		display: flex;
-		flex: 100%;
+		width: 100%;
 		height: 100%;
-		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-			Roboto, 'Helvetica Neue', Arial, sans-serif;
-		font-size: 16px;
+		font-size: 1rem;
 		background-color: transparent;
 		border: none;
 		margin: 0;
 		padding: 0;
 		padding-right: 0.5rem;
-		color: rgb(55, 53, 47);
+		color: currentColor;
 		word-wrap: break-word;
 		outline: none;
+	}
+`
+
+const StyledBlogList = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 140px;
+	row-gap: ${({ theme }) => theme.spacing(4)};
+	padding-top: ${({ theme }) => theme.spacing(4)};
+	${({ theme }) => theme.breakpoints.up('xl')} {
+		column-gap: ${({ theme }) => theme.spacing(8)};
+	}
+	${({ theme }) => theme.breakpoints.down('lg')} {
+		column-gap: 7vw;
+	}
+	${({ theme }) => theme.breakpoints.down('sm')} {
+		grid-template-columns: 1fr;
+	}
+	${({ theme }) => theme.breakpoints.down('xs')} {
+		padding-top: ${({ theme }) => theme.spacing(2)};
 	}
 `
