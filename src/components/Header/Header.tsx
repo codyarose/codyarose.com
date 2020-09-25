@@ -1,5 +1,5 @@
 import React, { FC, MouseEvent, useEffect, useState } from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import { useMediaQuery } from 'react-responsive'
 
 import theme from '../../theme'
@@ -35,7 +35,9 @@ const Header: FC<Props> = ({ location }) => {
 	`)
 	const __PATH_PREFIX__ = ''
 	const rootPath = `${__PATH_PREFIX__}/`
-	const isMobile = useMediaQuery({ maxWidth: theme.breakpoints.values.sm })
+	const isMobile = useMediaQuery({
+		maxWidth: theme.breakpoints.values.sm - 1,
+	})
 
 	const {
 		header: { links },
@@ -69,9 +71,13 @@ const Header: FC<Props> = ({ location }) => {
 				)}
 				<Styled.Links open={isOpen} onClickCapture={clickCapture}>
 					{links.map((link, i) => (
-						<Link key={i} to={link.url} activeClassName="active">
+						<Styled.Link
+							key={i}
+							to={link.url}
+							activeClassName="active"
+						>
 							{link.title}
-						</Link>
+						</Styled.Link>
 					))}
 				</Styled.Links>
 			</Styled.Content>

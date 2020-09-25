@@ -1,22 +1,17 @@
-import { Link } from 'gatsby'
+import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 
 import { Content as ContentComponent } from '../shared/Content'
+import StyledLink from '../shared/StyledLink'
 
 const Header = styled.header`
 	--title-size: 2rem;
-	padding: ${({ theme }) => theme.spacing(2, 0)};
+	padding: ${({ theme }) => theme.spacing(1, 0)};
 	letter-spacing: 4px;
 	font-size: 0.75rem;
 	${({ theme }) => theme.breakpoints.down('xs')} {
-		font-size: 1.5rem;
-	}
-	a {
-		text-decoration: none;
-		opacity: 0.75;
-		transition: opacity 0.2s ease-out;
-		&:hover {
-			opacity: 1;
+		a {
+			font-size: 1.5rem;
 		}
 	}
 `
@@ -27,7 +22,7 @@ const Content = styled(ContentComponent)`
 	align-items: center;
 `
 
-const TitleLink = styled(Link)`
+const TitleLink = styled(GatsbyLink)`
 	font-family: ${({ theme }) => theme.fontFamily.serif};
 	font-size: var(--title-size);
 	line-height: 1;
@@ -36,13 +31,9 @@ const TitleLink = styled(Link)`
 
 const Links = styled.div<{ open: boolean }>`
 	display: grid;
-	column-gap: 2rem;
+	column-gap: 1rem;
 	line-height: var(--title-size);
-	text-transform: uppercase;
 	margin-left: auto;
-	${({ theme }) => theme.breakpoints.down('sm')} {
-		column-gap: 1rem;
-	}
 	${({ theme }) => theme.breakpoints.up('sm')} {
 		grid-auto-flow: column;
 	}
@@ -69,7 +60,7 @@ const Links = styled.div<{ open: boolean }>`
 		&::after {
 			position: absolute;
 			content: '';
-			bottom: 0;
+			bottom: 0.5rem;
 			left: 50%;
 			transform: translateX(-50%);
 			width: 100%;
@@ -77,6 +68,11 @@ const Links = styled.div<{ open: boolean }>`
 			background-color: currentColor;
 		}
 	}
+`
+
+const Link = styled(GatsbyLink)`
+	${StyledLink}
+	padding: 0.5rem;
 `
 
 const MobileToggle = styled.button<{ open: boolean }>`
@@ -126,5 +122,6 @@ export const Styled = {
 	Content,
 	TitleLink,
 	Links,
+	Link,
 	MobileToggle,
 }
