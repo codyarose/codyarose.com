@@ -1,6 +1,7 @@
 import React, { FC, MouseEvent, useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useMediaQuery } from 'react-responsive'
+import { FaLightbulb as LightIcon } from 'react-icons/fa'
 
 import theme from '../../theme'
 import { Styled } from './Header.styled'
@@ -18,9 +19,10 @@ interface HeaderQuery {
 
 interface Props {
 	location: Location
+	toggleTheme: () => void
 }
 
-const Header: FC<Props> = ({ location }) => {
+const Header: FC<Props> = ({ location, toggleTheme }) => {
 	const { pageDataJson } = useStaticQuery<HeaderQuery>(graphql`
 		query {
 			pageDataJson {
@@ -66,6 +68,9 @@ const Header: FC<Props> = ({ location }) => {
 				{location.pathname !== rootPath && (
 					<Styled.TitleLink to="/">Cody Rose</Styled.TitleLink>
 				)}
+				<Styled.ThemeToggle onClick={toggleTheme}>
+					<LightIcon size={16} />
+				</Styled.ThemeToggle>
 				{isMobile && (
 					<Styled.MobileToggle open={isOpen} onClick={toggleOpen} />
 				)}

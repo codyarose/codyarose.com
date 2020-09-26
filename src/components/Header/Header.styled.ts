@@ -33,17 +33,17 @@ const Links = styled.div<{ open: boolean }>`
 	display: grid;
 	column-gap: 1rem;
 	line-height: var(--title-size);
-	margin-left: auto;
 	${({ theme }) => theme.breakpoints.up('sm')} {
 		grid-auto-flow: column;
 	}
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		position: absolute;
 		top: 100%;
-		left: 0;
-		right: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100%;
 		height: 100vh;
-		background-color: ${({ theme }) => theme.colors.black};
+		background-color: ${({ theme }) => theme.colors.bg};
 		grid-template-rows: repeat(auto-fit, minmax(1px, min-content));
 		row-gap: ${({ theme }) => theme.spacing(1)};
 		justify-content: center;
@@ -83,8 +83,8 @@ const MobileToggle = styled.button<{ open: boolean }>`
 	background-color: transparent;
 	border: none;
 	box-shadow: none;
-	margin-left: auto;
 	cursor: pointer;
+	color: inherit;
 	&:focus {
 		outline: none;
 	}
@@ -95,7 +95,7 @@ const MobileToggle = styled.button<{ open: boolean }>`
 		left: 0;
 		width: 100%;
 		height: 1px;
-		background-color: ${({ theme }) => theme.colors.white};
+		background-color: currentColor;
 		transition: transform 0.5s cubic-bezier(0.42, 0, 0, 1),
 			top 0.5s cubic-bezier(0.42, 0, 0, 1),
 			bottom 0.5s cubic-bezier(0.42, 0, 0, 1);
@@ -117,6 +117,18 @@ const MobileToggle = styled.button<{ open: boolean }>`
 	}
 `
 
+const ThemeToggle = styled.button`
+	background-color: transparent;
+	color: inherit;
+	border: none;
+	cursor: pointer;
+	margin: ${({ theme }) => theme.spacing(0, 2, 0, 1)};
+	margin-left: auto;
+	&:focus {
+		outline: none;
+	}
+`
+
 export const Styled = {
 	Header,
 	Content,
@@ -124,4 +136,5 @@ export const Styled = {
 	Links,
 	Link,
 	MobileToggle,
+	ThemeToggle,
 }
