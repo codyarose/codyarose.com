@@ -3,6 +3,18 @@ import theme from './src/theme'
 
 type Theme = typeof theme
 
+interface ThemeColors {
+	colors: {
+		bg: string
+		fg: string
+		accent: string
+	}
+}
+
+type ThemeUtils = Pick<Theme, 'breakpoints' | 'spacing' | 'fontFamily'>
+
+type NewTheme = ThemeColors & ThemeUtils
+
 declare module 'styled-components' {
-	export interface DefaultTheme extends Theme {}
+	export interface DefaultTheme extends NewTheme {}
 }

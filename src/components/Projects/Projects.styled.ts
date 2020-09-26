@@ -49,9 +49,6 @@ const Projects = styled.div`
 	${({ theme }) => theme.breakpoints.up('md')} {
 		margin-top: -2rem;
 	}
-	${({ theme }) => theme.breakpoints.down('sm')} {
-		/* margin: 0 auto; */
-	}
 `
 
 const ProjectsList = styled.ul`

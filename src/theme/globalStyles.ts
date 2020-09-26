@@ -15,8 +15,8 @@ const GlobalStyles = createGlobalStyle`
 		scroll-behavior: smooth;
 	}
 	body {
-		background-color: ${({ theme }) => theme.colors.black};
-		color: ${({ theme }) => theme.colors.white};
+		background-color: ${({ theme }) => theme.colors.bg};
+		color: ${({ theme }) => theme.colors.fg};
 	}
 	a {
 		color: inherit;

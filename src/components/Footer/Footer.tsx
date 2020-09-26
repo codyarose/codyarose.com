@@ -44,8 +44,7 @@ const Footer: FC = () => {
 export default Footer
 
 const StyledContent = styled(Content)`
-	grid-row-start: 2;
-	grid-row-end: 3;
+	flex-shrink: 0;
 	display: flex;
 	&& {
 		padding-top: ${({ theme }) => theme.spacing(1)};

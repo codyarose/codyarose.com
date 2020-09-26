@@ -3,6 +3,8 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { Container } from '../components/shared/Container'
+import { Content } from '../components/shared/Content'
 
 interface Props {
 	data: { site: { siteMetadata: { title: string } } }
@@ -15,8 +17,15 @@ const NotFoundPage: FC<Props> = ({ data, location }) => {
 	return (
 		<Layout location={location} title={siteTitle}>
 			<SEO title="404: Not Found" />
-			<h1>Whoops</h1>
-			<p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+			<Container compact={true}>
+				<Content>
+					<h1>Whoops</h1>
+					<p>
+						You just hit a route that doesn&#39;t exist... the
+						sadness.
+					</p>
+				</Content>
+			</Container>
 		</Layout>
 	)
 }
