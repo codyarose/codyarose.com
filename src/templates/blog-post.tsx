@@ -22,6 +22,7 @@ interface Props {
 				title: string
 				description: string
 				date: string
+				featuredImage: any
 			}
 		}
 	}
@@ -37,6 +38,7 @@ const BlogPostTemplate: FC<Props> = ({ data, location }) => {
 			<SEO
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
+				// image={post.frontmatter.featuredImage}
 			/>
 			<Container compact={true}>
 				<StyledContent compact={true}>
