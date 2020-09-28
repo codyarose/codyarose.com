@@ -1,6 +1,4 @@
-const asLiterals = <T extends string>(arr: T[]): T[] => arr
-
-const keys = asLiterals(['xs', 'sm', 'md', 'lg', 'xl'])
+const keys = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 
 type Values = { [K in typeof keys[number]]: number }
 
