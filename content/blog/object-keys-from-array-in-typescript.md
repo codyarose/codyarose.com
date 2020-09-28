@@ -5,7 +5,6 @@ title: Object Keys from Array in Typescript
 description: Creating a strongly typed object based on a string array.
 featuredImage: ../assets/type.jpg
 ---
-![Letterpress typeset](/../assets/type.jpg "Letterpress typeset")
 
 While creating a breakpoints utility on a styled-components theme I felt it would be valuable to have the size options strongly typed using a string array of possible sizes. Lets set up our starting point:
 

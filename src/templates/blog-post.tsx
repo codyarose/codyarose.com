@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from 'styled-components'
 
@@ -32,18 +33,24 @@ interface Props {
 const BlogPostTemplate: FC<Props> = ({ data, location }) => {
 	const post = data.mdx
 	const siteTitle = data.site.siteMetadata.title
+	const {
+		frontmatter: { title, description, featuredImage, date },
+	} = post
 
 	return (
 		<Layout location={location} title={siteTitle}>
 			<SEO
-				title={post.frontmatter.title}
-				description={post.frontmatter.description || post.excerpt}
-				// image={post.frontmatter.featuredImage}
+				title={title}
+				description={description || post.excerpt}
+				image={featuredImage.childImageSharp.fluid.src}
 			/>
 			<Container compact={true}>
 				<StyledContent compact={true}>
-					<StyledTitle>{post.frontmatter.title}</StyledTitle>
-					<StyledDate>{post.frontmatter.date}</StyledDate>
+					<StyledTitle>{title}</StyledTitle>
+					<StyledDate>{date}</StyledDate>
+					<StyledImgWrapper>
+						<Img fluid={featuredImage.childImageSharp.fluid} />
+					</StyledImgWrapper>
 					<StyledBody>
 						<MDXRenderer>{post.body}</MDXRenderer>
 					</StyledBody>
@@ -73,10 +80,14 @@ const StyledDate = styled.p`
 	font-size: 0.75rem;
 `
 
+const StyledImgWrapper = styled.div`
+	padding-top: ${({ theme }) => theme.spacing(2)};
+`
+
 const StyledBody = styled.div`
 	padding-top: ${({ theme }) => theme.spacing(3)};
 	${({ theme }) => theme.breakpoints.down('xs')} {
-		padding: ${({ theme }) => theme.spacing(1, 0)};
+		padding-top: ${({ theme }) => theme.spacing(2)};
 	}
 
 	a {
@@ -111,6 +122,13 @@ export const pageQuery = graphql`
 				title
 				date(formatString: "MMMM DD, YYYY")
 				description
+				featuredImage {
+					childImageSharp {
+						fluid(maxWidth: 640, quality: 70, grayscale: true) {
+							...GatsbyImageSharpFluid_tracedSVG
+						}
+					}
+				}
 			}
 		}
 	}
