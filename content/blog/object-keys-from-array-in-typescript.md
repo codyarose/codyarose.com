@@ -3,6 +3,7 @@ path: object-keys-from-array-typescript
 date: 2020-09-28T04:26:22.352Z
 title: Object Keys from Array in Typescript
 description: Creating a strongly typed object based on a string array.
+featuredImage: ../assets/type.jpg
 ---
 ![Letterpress typeset](/../assets/type.jpg "Letterpress typeset")
 
