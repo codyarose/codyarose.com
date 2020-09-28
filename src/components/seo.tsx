@@ -11,6 +11,7 @@ interface Props {
 	>
 	keywords?: string[]
 	title: string
+	image?: string
 }
 
 const SEO: FC<Props> = ({
@@ -19,6 +20,7 @@ const SEO: FC<Props> = ({
 	meta = [],
 	keywords = [],
 	title,
+	image,
 }) => {
 	const { site } = useStaticQuery(
 		graphql`
@@ -59,6 +61,10 @@ const SEO: FC<Props> = ({
 				{
 					property: `og:type`,
 					content: `website`,
+				},
+				{
+					property: `og:image`,
+					content: image,
 				},
 				{
 					name: `twitter:card`,
