@@ -64,7 +64,7 @@ const SEO: FC<Props> = ({
 				},
 				{
 					property: `og:image`,
-					content: image,
+					content: `https://codyarose.com${image}`,
 				},
 				{
 					name: `twitter:card`,
@@ -81,6 +81,10 @@ const SEO: FC<Props> = ({
 				{
 					name: `twitter:description`,
 					content: metaDescription,
+				},
+				{
+					name: `twitter:image`,
+					content: `https://codyarose.com${image}`,
 				},
 			]
 				.concat(
