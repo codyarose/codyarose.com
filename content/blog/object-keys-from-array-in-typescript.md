@@ -1,12 +1,13 @@
 ---
-path: object-keys-from-array-typescript
+path: typescript-object-keys-from-array
 date: 2020-09-28T04:26:22.352Z
-title: Object Keys from Array in Typescript
-description: Creating a strongly typed object based on a string array.
+title: "Typescript: Object Keys from Array"
+description: Creating a strongly typed object based on a string array using
+  const assertions and mapped types.
 featuredImage: ../assets/type.jpg
 ---
 
-While creating a breakpoints utility on a styled-components theme I felt it would be valuable to have the size options strongly typed using a string array of possible sizes. Lets set up our starting point:
+While creating a breakpoints utility on a styled-components theme (something like `theme.breakpoints.down('sm')`) I felt it would be valuable to have the size options strongly typed using a string array of possible sizes. Let's set up our starting point:
 
 ```tsx
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
@@ -22,7 +23,7 @@ const values = {
 
 At first that may seem unnecessary because an interface for `values` defining the possible key value pairs would be the right way to do it, but that won't work for my use case.
 
-I plan on referencing that array of possible sizes in each breakpoints method since the only possible parameters should be one of those strings, e.g. `theme.breakpoints.down('sm')`.
+I plan on referencing that array of possible sizes in each `breakpoints` method since the only possible parameters should be one of those strings.
 
 Is this overkill for a media query utility? Maybe 🤷‍♂️
 
@@ -38,11 +39,11 @@ const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 // type: readonly ["xs", "sm", "md", "lg", "xl"] ✅
 ```
 
-It's important to do this because when we create the type for `values` we don't want it to allow just any string as a key; the string must exist in `sizes`
+It's important to do this because when we create the type for `values` we don't want it to allow just any string as a key - the string must exist in `sizes`
 
 ## Mapped type for the `values` object
 
-For the `values` object we're going to create a [mapped type](https://www.typescriptlang.org/docs/handbook/advanced-types.html#mapped-types) using the `in` keyword and our `sizes` array. This will iterate over each item in `sizes` to create the keys then set the value type for those keys as `number`. The syntax for this one can be a bit difficult to read.
+For the `values` object we're going to create a [mapped type](https://www.typescriptlang.org/docs/handbook/advanced-types.html#mapped-types) using the `in` keyword and our `sizes` array. This will iterate over each item in `sizes` to create the keys then set the value type for those keys as `number`. The syntax for this one can be a bit difficult to read at first.
 
 ```tsx
 type Values = {
@@ -59,7 +60,7 @@ type Values = {
 // ✅
 ```
 
-`K` is the type parameter - you can think of it as `Key`, but you'll typically see it written as just `K`. Then `(typeof sizes)[number]` is an [indexed access type](https://www.typescriptlang.org/docs/handbook/advanced-types.html#index-types), which will get the resulting type from indexing `typeof sizes` with an index of type `number`. A more readable translation may be "create a key for each item in `sizes` then set the key value as type `number`."
+`K` is the type parameter - you can think of it as `Key`, but you'll typically see it written as `K`. Then `(typeof sizes)[number]` is an [indexed access type](https://www.typescriptlang.org/docs/handbook/advanced-types.html#index-types), which will get the resulting type from indexing `typeof sizes` with an index of type `number`. A more readable translation may be "create a key for each item in `sizes` then set the key value as type `number`."
 
 If we hadn't used `const assertion` on `sizes` the type would be very general and our mapped `Values` type would be equivalent to:
 
