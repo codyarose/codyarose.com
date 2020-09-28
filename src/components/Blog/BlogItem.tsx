@@ -35,7 +35,6 @@ const StyledTitle = styled.h3`
 	font-size: 2.5rem;
 	letter-spacing: -0.06em;
 	margin-bottom: ${({ theme }) => theme.spacing(1)};
-	border-bottom: 1px solid currentColor;
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		font-size: 2rem;
 	}
