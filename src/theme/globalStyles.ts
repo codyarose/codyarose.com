@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
+import { codeStyles } from './codeStyles'
+
 const GlobalStyles = createGlobalStyle`
 	@font-face {
 		font-family: "Butler Bold";
@@ -25,6 +27,7 @@ const GlobalStyles = createGlobalStyle`
 	::selection {
 		background: ${({ theme }) => theme.colors.accent};
 	}
+	${codeStyles}
 `
 
 export default GlobalStyles

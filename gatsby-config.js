@@ -112,7 +112,10 @@ module.exports = {
 						},
 					},
 					{
-						resolve: `gatsby-remark-vscode`,
+						resolve: `gatsby-remark-prismjs`,
+						options: {
+							inlineCodeMarker: '>',
+						},
 					},
 					{
 						resolve: `gatsby-remark-copy-linked-files`,
