@@ -48,7 +48,7 @@ export const codeStyles = css`
 			font-size: 1rem;
 		}
 	}
-	pre[class='language-ts']::before {
+	pre[class*='language-ts']::before {
 		content: 'ts';
 	}
 	pre[class='language-tsx']::before {
@@ -163,5 +163,46 @@ export const codeStyles = css`
 
 	.token.inserted {
 		color: green;
+	}
+
+	/* Line Numbers */
+	pre[class*='language-'].line-numbers {
+		position: relative;
+		padding-left: 2.5rem;
+		counter-reset: linenumber;
+	}
+
+	pre[class*='language-'].line-numbers > code {
+		position: relative;
+		white-space: inherit;
+	}
+
+	.line-numbers .line-numbers-rows {
+		position: absolute;
+		pointer-events: none;
+		top: 2rem;
+		font-size: 100%;
+		padding-left: 0.5rem;
+		left: -3.8rem;
+		width: 3em; /* works for line-numbers below 1000 lines */
+		letter-spacing: -1px;
+
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+	.line-numbers-rows > span:before {
+		content: counter(linenumber);
+		color: #999;
+		display: block;
+		padding-right: 0.8em;
+		text-align: right;
 	}
 `
