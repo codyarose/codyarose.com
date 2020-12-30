@@ -1,0 +1,5 @@
+[[redirects]]
+	from = "/botw-cooking"
+	to = "https://codyarose.github.io/botw-cooking/"
+	status = 200
+	force = true
