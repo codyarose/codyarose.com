@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Content as ContentComponent } from '../shared/Content'
 import StyledLink from '../shared/StyledLink'
 
-const Header = styled.header`
+const Header = styled.nav`
 	--title-size: 2rem;
 	padding: ${({ theme }) => theme.spacing(1, 0)};
 	letter-spacing: 4px;

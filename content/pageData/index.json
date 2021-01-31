@@ -16,7 +16,7 @@
 		"hero": {
 			"name": "Cody Rose",
 			"intro": "Frontend developer, artist, maker, refactorer.",
-			"about": "I'm an Austin-based developer who loves contributing to OSS and building beautiful, challenging, and efficient websites with React and Typescript. I'm trying my best to learn as much as I can and share what I learn with others."
+			"about": "I'm an Austin-based developer who loves contributing to open source software and building beautiful, challenging, and efficient websites with React and Typescript. I'm trying my best to learn as much as I can and share what I learn with others."
 		},
 		"projects": [
 			{
