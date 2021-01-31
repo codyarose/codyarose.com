@@ -66,7 +66,6 @@ export const query = graphql`
 
 const $Grid = styled.div`
 	display: grid;
-	grid-template-columns: minmax(10px, 60rem);
 	justify-content: center;
 	row-gap: 9rem;
 	padding-top: 5rem;

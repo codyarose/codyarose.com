@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import { FaLightbulb as LightIcon } from 'react-icons/fa'
 
 import theme from '../../theme'
-import { Styled } from './Header.styled'
+import { Styled } from './Nav.styled'
 
 interface HeaderQuery {
 	pageDataJson: {

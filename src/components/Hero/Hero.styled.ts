@@ -6,11 +6,9 @@ const Content = styled.header`
 	grid-auto-rows: auto;
 	align-items: flex-start;
 	gap: ${({ theme }) => theme.spacing(4, 2)};
-	padding: ${({ theme }) => theme.spacing(0, 5)};
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		grid-template-columns: 1fr;
 		row-gap: ${({ theme }) => theme.spacing(3)};
-		padding: ${({ theme }) => theme.spacing(0, 2)};
 	}
 `
 
