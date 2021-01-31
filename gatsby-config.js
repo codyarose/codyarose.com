@@ -1,5 +1,5 @@
 require('dotenv').config({
-	path: `.env.${process.env.GA_TRACKING_ID}`,
+	path: `.env.development`,
 })
 
 module.exports = {

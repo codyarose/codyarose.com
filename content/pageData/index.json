@@ -6,19 +6,17 @@
 			{ "title": "About", "url": "/#about" }
 		]
 	},
-	"social": [
-		{ "title": "github", "url": "https://github.com/codyarose" },
-		{
-			"title": "linkedin",
-			"url": "https://www.linkedin.com/in/codyarose/"
-		},
-		{ "title": "email", "url": "mailto:crose992@gmail.com" }
-	],
+	"social": {
+		"github": "https://github.com/codyarose",
+		"linkedin": "https://www.linkedin.com/in/codyarose/",
+		"twitter": "https://twitter.com/codyarose",
+		"email": "mailto:cody@codyarose.com"
+	},
 	"home": {
 		"hero": {
 			"name": "Cody Rose",
-			"position": "Front End Developer",
-			"intro": "I'm an Austin based developer that loves building beautiful, challenging UI with React and Typescript."
+			"intro": "Frontend developer, artist, maker, refactorer.",
+			"about": "I'm an Austin-based developer who loves contributing to OSS and building beautiful, challenging, and efficient websites with React and Typescript. I'm trying my best to learn as much as I can and share what I learn with others."
 		},
 		"projects": [
 			{

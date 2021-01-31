@@ -19,8 +19,9 @@ const Footer: FC = () => {
 		query {
 			pageDataJson {
 				social {
-					title
-					url
+					github
+					linkedin
+					email
 				}
 			}
 		}
@@ -29,14 +30,14 @@ const Footer: FC = () => {
 
 	return (
 		<StyledContent>
-			<StyledLinks>
+			{/* <StyledLinks>
 				<Link to="/blog">Blog</Link>
 				{social.map((link, i) => (
 					<a key={i} href={link.url}>
 						{link.title}
 					</a>
 				))}
-			</StyledLinks>
+			</StyledLinks> */}
 		</StyledContent>
 	)
 }
