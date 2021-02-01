@@ -2,13 +2,14 @@ import React, { FC } from 'react'
 import Img, { FluidObject } from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { Content } from '../shared/Content'
-import Styled from './Hero.styled'
-import { Hr } from '../shared/Hr'
+import $ from './Hero.styled'
 import { Text } from '../shared/Text'
-
+import Icon from '../shared/Icon'
 interface Props {
-	portrait: FluidObject | FluidObject[]
+	assets: {
+		portrait: FluidObject | FluidObject[]
+		resumePath: string
+	}
 }
 
 interface HeroQuery {
@@ -16,18 +17,17 @@ interface HeroQuery {
 		home: {
 			hero: {
 				name: string
-				position: string
 				intro: string
+				about: string
 			}
 		}
 		social: {
-			title: string
-			url: string
-		}[]
+			[key: string]: string
+		}
 	}
 }
 
-const Hero: FC<Props> = ({ portrait }) => {
+const Hero: FC<Props> = ({ assets }) => {
 	const { pageDataJson } = useStaticQuery<HeroQuery>(
 		graphql`
 			query {
@@ -35,13 +35,15 @@ const Hero: FC<Props> = ({ portrait }) => {
 					home {
 						hero {
 							name
-							position
 							intro
+							about
 						}
 					}
 					social {
-						title
-						url
+						github
+						linkedin
+						twitter
+						email
 					}
 				}
 			}
@@ -50,43 +52,66 @@ const Hero: FC<Props> = ({ portrait }) => {
 
 	const {
 		home: {
-			hero: { name, position, intro },
+			hero: { name, intro, about },
 		},
 		social,
 	} = pageDataJson
 
 	return (
-		<Styled.Container>
-			<Content grid={true}>
-				<Styled.BioContent>
-					<Styled.Title>{name}</Styled.Title>
-					<Hr />
-					<Text.Spaced>{position}</Text.Spaced>
-					<br />
-					<Text.Spaced>{intro}</Text.Spaced>
-					<Hr />
-					<Styled.SocialIcons>
-						{social.map((link, i) => (
-							<Styled.SocialLink
-								key={i}
-								href={link.url}
-								target="_blank"
-							>
-								{link.title}
-							</Styled.SocialLink>
-						))}
-					</Styled.SocialIcons>
-				</Styled.BioContent>
-				<Styled.ImageContainer>
-					<Styled.ImageWrapper>
-						<Img
-							fluid={portrait}
-							imgStyle={{ maxHeight: '100vh' }}
-						/>
-					</Styled.ImageWrapper>
-				</Styled.ImageContainer>
-			</Content>
-		</Styled.Container>
+		<$.Content>
+			<$.ImageContainer>
+				<$.ImageWrapper>
+					<Img
+						fluid={assets.portrait}
+						imgStyle={{ maxHeight: '100vh' }}
+					/>
+				</$.ImageWrapper>
+			</$.ImageContainer>
+			<$.TitleArea>
+				<$.Title>Hey, I'm {name}.</$.Title>
+				<span>{intro}</span>
+			</$.TitleArea>
+			<$.About>
+				<Text.Spaced>{about}</Text.Spaced>
+				<$.SocialIcons>
+					<a
+						href={assets.resumePath}
+						title="View my resume"
+						target="_blank"
+					>
+						<Icon variant="doc" height="20" />
+					</a>
+					<a
+						href={`mailto:${social.email}`}
+						title="Email me"
+						target="_blank"
+					>
+						<Icon variant="send" width="20" />
+					</a>
+					<a
+						href={social.github}
+						title="GitHub Profile"
+						target="_blank"
+					>
+						<Icon variant="github" width="20" />
+					</a>
+					<a
+						href={social.linkedin}
+						title="LinkedIn Profile"
+						target="_blank"
+					>
+						<Icon variant="linkedin" width="20" />
+					</a>
+					<a
+						href={social.twitter}
+						title="Twitter Profile"
+						target="_blank"
+					>
+						<Icon variant="twitter" width="20" />
+					</a>
+				</$.SocialIcons>
+			</$.About>
+		</$.Content>
 	)
 }
 

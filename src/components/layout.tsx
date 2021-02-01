@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 
 import theme from '../theme'
 import GlobalStyles from '../theme/globalStyles'
-import Header from './Header'
+import Nav from './Nav'
 import Footer from './Footer'
 import { useLocalStorage } from '../utils/useLocalStorage'
 
@@ -21,6 +21,7 @@ const Layout: FC<Props> = ({ location, children }) => {
 			bg: colors[currentTheme].bg,
 			fg: colors[currentTheme].fg,
 			accent: colors[currentTheme].accent,
+			cardBg: colors[currentTheme].cardBg,
 		},
 		...rest,
 	}
@@ -29,28 +30,30 @@ const Layout: FC<Props> = ({ location, children }) => {
 		<ThemeProvider theme={newTheme}>
 			<GlobalStyles />
 			<Wrapper>
-				<StyledContent>
-					<Header
-						location={location}
-						toggleTheme={() => setDarkMode(!isDarkMode)}
-					/>
-					<main>{children}</main>
-				</StyledContent>
-				<Footer />
+				<Nav
+					location={location}
+					toggleTheme={() => setDarkMode(!isDarkMode)}
+				/>
+				<main>{children}</main>
+				<Footer location={location} />
 			</Wrapper>
 		</ThemeProvider>
 	)
 }
 
 const Wrapper = styled.div`
+	max-width: 60rem;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-`
-
-const StyledContent = styled.div`
-	width: 100%;
-	flex: 1 0 auto;
+	padding: ${({ theme }) => theme.spacing(0, 5)};
+	margin: 0 auto;
+	${({ theme }) => theme.breakpoints.down('xs')} {
+		padding: ${({ theme }) => theme.spacing(0, 2)};
+	}
+	main {
+		flex-grow: 1;
+	}
 `
 
 export default Layout

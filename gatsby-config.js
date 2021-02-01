@@ -1,5 +1,5 @@
 require('dotenv').config({
-	path: `.env.${process.env.GA_TRACKING_ID}`,
+	path: `.env.development`,
 })
 
 module.exports = {
@@ -72,6 +72,14 @@ module.exports = {
 		},
 		`gatsby-plugin-feed-mdx`,
 		`gatsby-plugin-root-import`,
+		{
+			resolve: `gatsby-plugin-react-svg`,
+			options: {
+				rule: {
+					include: /svg/,
+				},
+			},
+		},
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {

@@ -6,7 +6,8 @@ import SEO from '../components/seo'
 
 import Hero from '../components/Hero'
 import Projects from '../components/Projects'
-import About from '../components/About'
+import styled from 'styled-components'
+import Contact from '../components/Contact'
 
 interface Props {
 	location: Location
@@ -15,7 +16,10 @@ interface Props {
 
 const IndexPage: FC<Props> = ({ data, location }) => {
 	const siteTitle = 'Cody Rose'
-	const portrait = data.file.childImageSharp.fluid
+	const assets = {
+		portrait: data.file.childImageSharp.fluid,
+		resumePath: data.allFile.edges[0].node.publicURL,
+	}
 
 	return (
 		<Layout location={location} title={siteTitle}>
@@ -30,9 +34,11 @@ const IndexPage: FC<Props> = ({ data, location }) => {
 					`react`,
 				]}
 			/>
-			<Hero portrait={portrait} />
-			<Projects />
-			<About />
+			<$Grid>
+				<Hero assets={assets} />
+				<Projects />
+				<Contact />
+			</$Grid>
 		</Layout>
 	)
 }
@@ -40,13 +46,31 @@ const IndexPage: FC<Props> = ({ data, location }) => {
 export default IndexPage
 
 export const query = graphql`
-	query PortraitQuery {
-		file(relativePath: { eq: "portrait.jpg" }) {
+	query HeroAssetsQuery {
+		file(relativePath: { eq: "portrait-small.jpg" }) {
 			childImageSharp {
-				fluid(maxWidth: 448, quality: 100) {
+				fluid(maxWidth: 250, quality: 100) {
 					...GatsbyImageSharpFluid_tracedSVG
 				}
 			}
 		}
+		allFile(filter: { name: { regex: "/resume/i" } }) {
+			edges {
+				node {
+					publicURL
+				}
+			}
+		}
+	}
+`
+
+const $Grid = styled.div`
+	display: grid;
+	justify-content: center;
+	row-gap: 9rem;
+	padding: 5rem 0;
+	${({ theme }) => theme.breakpoints.down('xs')} {
+		row-gap: 5rem;
+		padding: 2rem 0;
 	}
 `

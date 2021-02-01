@@ -1,21 +1,22 @@
-import React, { FC, useState, MouseEvent } from 'react'
+import React, { FC } from 'react'
 
-import { Hr } from '../shared/Hr'
+import { $ } from './Projects.styled'
 import { Text } from '../shared/Text'
-import Fade from '../shared/Fade'
-import { Styled } from './Projects.styled'
-import { Container } from '../shared/Container'
-import { Content } from '../shared/Content'
 import { graphql, useStaticQuery } from 'gatsby'
-
+import Icon from '../shared/Icon'
 interface ProjectsQuery {
 	pageDataJson: {
 		home: {
 			projects: {
-				title: string
-				githubSlug: string
-				description: string
-			}[]
+				intro: string
+				list: {
+					title: string
+					githubUrl: string
+					description: string
+					demo: string
+					tags: string[]
+				}[]
+			}
 		}
 	}
 }
@@ -26,9 +27,14 @@ const Projects: FC = () => {
 			pageDataJson {
 				home {
 					projects {
-						title
-						githubSlug
-						description
+						intro
+						list {
+							title
+							githubUrl
+							description
+							demo
+							tags
+						}
 					}
 				}
 			}
@@ -38,53 +44,46 @@ const Projects: FC = () => {
 		home: { projects },
 	} = pageDataJson
 
-	const [currentIndex, setCurrentIndex] = useState(0)
-
-	const handleHover = (e: MouseEvent<HTMLLIElement>) => {
-		const { value } = e.target as HTMLLIElement
-		setCurrentIndex(value)
-	}
-
 	return (
-		<Container id="projects">
-			<Content grid={true}>
-				<Styled.Title>
-					<Styled.H2>
-						<Text.Spaced>Projects</Text.Spaced>
-					</Styled.H2>
-					<Hr />
-				</Styled.Title>
-				<Styled.DescriptionContainer>
-					{projects.map((project, i) => (
-						<Styled.Description key={i}>
-							<Fade show={currentIndex === i}>
-								<p>{project.description}</p>
-							</Fade>
-						</Styled.Description>
-					))}
-				</Styled.DescriptionContainer>
-				<Styled.Projects>
-					<div />
-					<Styled.ProjectsList>
-						{projects.map((project, i) => (
-							<Styled.ProjectItem
-								key={i}
-								onMouseEnter={handleHover}
-								value={i}
-								active={currentIndex === i}
-							>
+		<$.Container>
+			<div>
+				<h2>Projects</h2>
+				<Text.Spaced as="p">{projects.intro}.</Text.Spaced>
+			</div>
+			<$.List>
+				{projects.list.map(project => (
+					<$.Card key={project.title}>
+						<h3>{project.title}</h3>
+						<Text.Spaced as="p">{project.description}</Text.Spaced>
+						<$.Links>
+							{project.githubUrl ? (
 								<a
-									href={`https://github.com/codyarose/${project.githubSlug}`}
+									href={project.githubUrl}
+									title={`${project.title} GitHub Repository`}
 									target="_blank"
 								>
-									{project.title}
+									Code
+									<Icon variant="chevronRight" width="6" />
 								</a>
-							</Styled.ProjectItem>
-						))}
-					</Styled.ProjectsList>
-				</Styled.Projects>
-			</Content>
-		</Container>
+							) : null}
+							{project.demo ? (
+								<a href={project.demo} target="_blank">
+									Demo
+									<Icon variant="chevronRight" width="6" />
+								</a>
+							) : null}
+						</$.Links>
+						{project.tags ? (
+							<$.Tags>
+								{project.tags.map(tag => (
+									<li key={tag}>{tag}</li>
+								))}
+							</$.Tags>
+						) : null}
+					</$.Card>
+				))}
+			</$.List>
+		</$.Container>
 	)
 }
 

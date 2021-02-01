@@ -18,7 +18,7 @@ const SearchedPosts: FC<{ results: Result[] }> = ({ results }): any => {
 			return <BlogItem key={node.slug} {...node} />
 		})
 	) : (
-		<p style={{ textAlign: 'center' }}>
+		<p style={{ textAlign: 'center', gridColumn: '1 / -1' }}>
 			Sorry, couldn't find any posts matching this search.
 		</p>
 	)
@@ -83,7 +83,7 @@ const SearchPosts: FC<Props> = ({
 
 	return (
 		<>
-			<SearchBar>
+			<$SearchBar>
 				<svg
 					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
@@ -105,21 +105,21 @@ const SearchPosts: FC<Props> = ({
 						setQuery(e.target.value)
 					}}
 				/>
-			</SearchBar>
-			<StyledBlogList>
+			</$SearchBar>
+			<$BlogList>
 				{query ? (
 					<SearchedPosts results={results} />
 				) : (
 					<AllPosts posts={posts} />
 				)}
-			</StyledBlogList>
+			</$BlogList>
 		</>
 	)
 }
 
 export default SearchPosts
 
-const SearchBar = styled.div`
+const $SearchBar = styled.div`
 	width: 100%;
 	max-width: 560px;
 	height: 3rem;
@@ -156,23 +156,13 @@ const SearchBar = styled.div`
 	}
 `
 
-const StyledBlogList = styled.div`
+const $BlogList = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	column-gap: 140px;
-	row-gap: ${({ theme }) => theme.spacing(4)};
+	grid-auto-rows: auto;
+	gap: ${({ theme }) => theme.spacing(4)};
 	padding-top: ${({ theme }) => theme.spacing(4)};
-	${({ theme }) => theme.breakpoints.up('xl')} {
-		column-gap: ${({ theme }) => theme.spacing(8)};
-	}
-	${({ theme }) => theme.breakpoints.down('lg')} {
-		column-gap: 7vw;
-	}
-	${({ theme }) => theme.breakpoints.down('sm')} {
-		grid-template-columns: 1fr;
-	}
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		padding-top: ${({ theme }) => theme.spacing(2)};
-		row-gap: ${({ theme }) => theme.spacing(2)};
+		gap: ${({ theme }) => theme.spacing(2)};
 	}
 `

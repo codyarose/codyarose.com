@@ -1,5 +1,7 @@
 {
 	"conventionalCommits.scopes": [
-		"dependencies"
+		"dependencies",
+		"component",
+		"styles"
 	]
 }

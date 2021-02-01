@@ -1,45 +1,54 @@
 {
 	"header": {
-		"links": [
-			{ "title": "Blog", "url": "/blog/" },
-			{ "title": "Projects", "url": "/#projects" },
-			{ "title": "About", "url": "/#about" }
-		]
+		"links": [{ "title": "Blog", "url": "/blog/" }]
 	},
-	"social": [
-		{ "title": "github", "url": "https://github.com/codyarose" },
-		{
-			"title": "linkedin",
-			"url": "https://www.linkedin.com/in/codyarose/"
-		},
-		{ "title": "email", "url": "mailto:crose992@gmail.com" }
-	],
+	"social": {
+		"github": "https://github.com/codyarose",
+		"linkedin": "https://www.linkedin.com/in/codyarose/",
+		"twitter": "https://twitter.com/codyarose",
+		"email": "cody@codyarose.com"
+	},
 	"home": {
 		"hero": {
 			"name": "Cody Rose",
-			"position": "Front End Developer",
-			"intro": "I'm an Austin based developer that loves building beautiful, challenging UI with React and Typescript."
+			"intro": "Frontend developer, artist, maker, refactorer.",
+			"about": "I'm an Austin-based developer who loves contributing to open source software and building beautiful, challenging, and efficient websites with React and Typescript. I'm trying my best to learn as much as I can and share what I learn with others."
 		},
-		"projects": [
-			{
-				"title": "Budget App",
-				"githubSlug": "budget-app",
-				"description": "A full stack expense tracking app built with React, Typescript, Redux, and Firebase."
-			},
-			{
-				"title": "BotW Cooking",
-				"githubSlug": "botw-cooking",
-				"description": "An app for the Breath of the Wild cooking system built with React and Typescript."
-			},
-			{
-				"title": "Signature Builder",
-				"githubSlug": "react-email-signature-builder",
-				"description": "An email signature builder built with React."
-			}
-		],
-		"about": [
-			"I'm a Front End Developer in Austin, TX interested in working (remotely) on challenging projects using React and Typescript.",
-			"I have several years of agency experience building websites from design mockups, but my knowledge of React is all self-taught."
-		]
+		"projects": {
+			"intro": "I keep a running list of ideas and enjoy contributing to open source, so I always have a project in the works. Here are a few of my favorites",
+			"list": [
+				{
+					"title": "Hasty Hops",
+					"githubUrl": "https://github.com/codyarose/hasty-hops",
+					"description": "Search for beers to view their info and ratings.",
+					"demo": "https://hastyhops.netlify.app/",
+					"tags": ["TypeScript", "React", "React Query"]
+				},
+				{
+					"title": "HospitalRun",
+					"githubUrl": "https://github.com/HospitalRun/hospitalrun-frontend/pull/2516",
+					"description": "Open source contribution to convert 700+ tests from Enzyme to React Testing Library.",
+					"tags": ["TypeScript", "React", "Testing Library"]
+				},
+				{
+					"title": "Expense Tracker",
+					"githubUrl": "https://github.com/codyarose/budget-app",
+					"description": "A web app for expense tracking with user authentication.",
+					"demo": "https://react-typescript-budget.herokuapp.com/",
+					"tags": ["TypeScript", "React", "Firebase"]
+				},
+				{
+					"title": "Breath of the Wild Cooking",
+					"githubUrl": "https://github.com/codyarose/botw-cooking",
+					"description": "A tool create dishes based on the BotW cooking system.",
+					"demo": "https://codyarose.github.io/botw-cooking/",
+					"tags": ["TypeScript", "React"]
+				}
+			]
+		},
+		"contact": {
+			"title": "Let's talk",
+			"intro": "I'm currently looking for a remote full-time React Engineer position. If you know of any feel free to reach out!"
+		}
 	}
 }

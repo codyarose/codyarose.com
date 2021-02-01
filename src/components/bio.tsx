@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+// import Image from 'gatsby-image'
 import styled from 'styled-components'
 
 const Bio: FC = () => {
@@ -11,10 +11,10 @@ const Bio: FC = () => {
 				const { author } = data.site.siteMetadata
 				return (
 					<StyledBio>
-						<Image
+						{/* <Image
 							fixed={data.avatar.childImageSharp.fixed}
 							alt={author}
-						/>
+						/> */}
 						<p>
 							Hey! I'm {author}, an Austin based developer that
 							loves building beautiful, challenging UI with React
@@ -36,13 +36,13 @@ const StyledBio = styled.div`
 
 const bioQuery = graphql`
 	query BioQuery {
-		avatar: file(relativePath: { eq: "portrait.jpg" }) {
-			childImageSharp {
-				fixed(width: 100, quality: 100) {
-					...GatsbyImageSharpFixed
-				}
-			}
-		}
+		# avatar: file(relativePath: { eq: "portrait.jpg" }) {
+		# 	childImageSharp {
+		# 		fixed(width: 100, quality: 100) {
+		# 			...GatsbyImageSharpFixed
+		# 		}
+		# 	}
+		# }
 		site {
 			siteMetadata {
 				author
