@@ -8,13 +8,16 @@ const Content = styled.header`
 	gap: ${({ theme }) => theme.spacing(4, 2)};
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		grid-template-columns: 1fr;
-		row-gap: ${({ theme }) => theme.spacing(3)};
+		row-gap: ${({ theme }) => theme.spacing(2)};
 	}
 `
 
 const TitleArea = styled.div`
 	align-self: flex-end;
 	font-size: 1.5rem;
+	${({ theme }) => theme.breakpoints.down('xs')} {
+		font-size: 1.25rem;
+	}
 `
 
 const Title = styled.h1`

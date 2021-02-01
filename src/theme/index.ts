@@ -5,13 +5,13 @@ import { fontFamily } from './fontFamily'
 const theme = {
 	colors: {
 		dark: {
-			bg: '#0a0500',
-			fg: '#fff',
+			bg: 'hsl(0, 0%, 7%)',
+			fg: 'hsl(0,0%,93%)',
 			accent: '#f694c1',
 		},
 		light: {
-			bg: '#fff',
-			fg: '#0a0500',
+			bg: 'hsl(0,0%,93%)',
+			fg: 'hsl(0, 0%, 7%)',
 			accent: '#bd3f79',
 		},
 	},

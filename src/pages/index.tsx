@@ -70,7 +70,7 @@ const $Grid = styled.div`
 	row-gap: 9rem;
 	padding-top: 5rem;
 	${({ theme }) => theme.breakpoints.down('xs')} {
-		row-gap: 3rem;
-		padding-top: 3rem;
+		row-gap: 5rem;
+		padding-top: 2rem;
 	}
 `
