@@ -46,7 +46,7 @@ const Projects: FC = () => {
 	} = pageDataJson
 
 	return (
-		<$.Container id="projects">
+		<$.Container>
 			<div>
 				<h2>Projects</h2>
 				<Text.Spaced as="p">{projects.intro}.</Text.Spaced>

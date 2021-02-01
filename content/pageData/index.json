@@ -1,10 +1,6 @@
 {
 	"header": {
-		"links": [
-			{ "title": "Blog", "url": "/blog/" },
-			{ "title": "Projects", "url": "/#projects" },
-			{ "title": "About", "url": "/#about" }
-		]
+		"links": [{ "title": "Blog", "url": "/blog/" }]
 	},
 	"social": {
 		"github": "https://github.com/codyarose",
