@@ -6,7 +6,6 @@ import SEO from '../components/seo'
 
 import Hero from '../components/Hero'
 import Projects from '../components/Projects'
-import About from '../components/About'
 import styled from 'styled-components'
 
 interface Props {
@@ -37,7 +36,6 @@ const IndexPage: FC<Props> = ({ data, location }) => {
 			<$Grid>
 				<Hero assets={assets} />
 				<Projects />
-				<About />
 			</$Grid>
 		</Layout>
 	)
