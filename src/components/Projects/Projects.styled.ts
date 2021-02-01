@@ -23,7 +23,7 @@ const Card = styled.li`
 	flex-direction: column;
 	padding: ${({ theme }) => theme.spacing(3)};
 	margin: 0;
-	background-color: hsl(0, 0%, 9%);
+	background-color: ${({ theme }) => theme.colors.cardBg};
 	border-radius: 8px;
 	> p {
 		flex-grow: 1;

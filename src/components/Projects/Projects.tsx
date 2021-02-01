@@ -4,7 +4,6 @@ import { $ } from './Projects.styled'
 import { Text } from '../shared/Text'
 import { graphql, useStaticQuery } from 'gatsby'
 import Icon from '../shared/Icon'
-
 interface ProjectsQuery {
 	pageDataJson: {
 		home: {
@@ -77,7 +76,7 @@ const Projects: FC = () => {
 						{project.tags ? (
 							<$.Tags>
 								{project.tags.map(tag => (
-									<li>{tag}</li>
+									<li key={tag}>{tag}</li>
 								))}
 							</$.Tags>
 						) : null}

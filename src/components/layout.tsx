@@ -21,6 +21,7 @@ const Layout: FC<Props> = ({ location, children }) => {
 			bg: colors[currentTheme].bg,
 			fg: colors[currentTheme].fg,
 			accent: colors[currentTheme].accent,
+			cardBg: colors[currentTheme].cardBg,
 		},
 		...rest,
 	}

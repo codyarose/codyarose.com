@@ -8,6 +8,7 @@ interface ThemeColors {
 		bg: string
 		fg: string
 		accent: string
+		cardBg: string
 	}
 }
 
