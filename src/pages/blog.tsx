@@ -4,8 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import SearchPosts from '../components/searchPosts'
-import { Content } from '../components/shared/Content'
-import { Container } from '../components/shared/Container'
+import styled from 'styled-components'
 
 interface AllMdx {
 	edges: { node: { id: string } }[]
@@ -34,22 +33,27 @@ const Blog: FC<Props> = ({ data, navigate, location }) => {
 
 	return (
 		<Layout location={location} title={siteTitle}>
-			<Container compact={true}>
-				<Content>
-					<SEO title="Blog" />
-					<SearchPosts
-						posts={posts}
-						localSearchBlog={localSearchBlog}
-						navigate={navigate}
-						location={location}
-					/>
-				</Content>
-			</Container>
+			<SEO title="Blog" />
+			<$Container>
+				<SearchPosts
+					posts={posts}
+					localSearchBlog={localSearchBlog}
+					navigate={navigate}
+					location={location}
+				/>
+			</$Container>
 		</Layout>
 	)
 }
 
 export default Blog
+
+const $Container = styled.div`
+	padding: 5rem 0;
+	${({ theme }) => theme.breakpoints.down('xs')} {
+		padding: 2rem 0;
+	}
+`
 
 export const pageQuery = graphql`
 	query {

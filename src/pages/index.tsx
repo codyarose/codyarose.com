@@ -68,9 +68,9 @@ const $Grid = styled.div`
 	display: grid;
 	justify-content: center;
 	row-gap: 9rem;
-	padding: 5rem 0 5rem;
+	padding: 5rem 0;
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		row-gap: 5rem;
-		padding: 2rem 0 2rem;
+		padding: 2rem 0;
 	}
 `
