@@ -73,6 +73,14 @@ module.exports = {
 		`gatsby-plugin-feed-mdx`,
 		`gatsby-plugin-root-import`,
 		{
+			resolve: `gatsby-plugin-react-svg`,
+			options: {
+				rule: {
+					include: /svg/,
+				},
+			},
+		},
+		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				path: `${__dirname}/content/blog`,
