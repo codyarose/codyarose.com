@@ -2,72 +2,85 @@ import React, { FC } from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
-import { Content } from '../shared/Content'
-import StyledLink from '../shared/StyledLink'
+import Icon from '../shared/Icon'
 
+interface Props {
+	location: Location
+}
 interface FooterQuery {
 	pageDataJson: {
 		social: {
-			title: string
-			url: string
-		}[]
+			github: string
+			linkedin: string
+			twitter: string
+		}
 	}
 }
 
-const Footer: FC = () => {
+const Footer: FC<Props> = ({ location }) => {
 	const { pageDataJson } = useStaticQuery<FooterQuery>(graphql`
 		query {
 			pageDataJson {
 				social {
 					github
 					linkedin
-					email
+					twitter
 				}
 			}
 		}
 	`)
+	const __PATH_PREFIX__ = ''
+	const rootPath = `${__PATH_PREFIX__}/`
+
 	const { social } = pageDataJson
 
 	return (
-		<StyledContent>
-			{/* <StyledLinks>
-				<Link to="/blog">Blog</Link>
-				{social.map((link, i) => (
-					<a key={i} href={link.url}>
-						{link.title}
-					</a>
-				))}
-			</StyledLinks> */}
-		</StyledContent>
+		<$Content>
+			{location.pathname !== rootPath ? (
+				<$HomeLink to="/">Cody Rose</$HomeLink>
+			) : null}
+			<$SocialLinks>
+				<a href={social.github} title="GitHub Profile" target="_blank">
+					<Icon variant="github" width="20" />
+				</a>
+				<a
+					href={social.linkedin}
+					title="LinkedIn Profile"
+					target="_blank"
+				>
+					<Icon variant="linkedin" width="20" />
+				</a>
+				<a
+					href={social.twitter}
+					title="Twtiter Profile"
+					target="_blank"
+				>
+					<Icon variant="twitter" width="20" />
+				</a>
+			</$SocialLinks>
+		</$Content>
 	)
 }
 
 export default Footer
 
-const StyledContent = styled(Content)`
-	flex-shrink: 0;
+const $Content = styled.footer`
 	display: flex;
-	&& {
-		padding-top: ${({ theme }) => theme.spacing(1)};
-		padding-bottom: ${({ theme }) => theme.spacing(1)};
-	}
-
-	a {
-		${StyledLink}
-		padding: 0.5rem;
-	}
+	justify-content: space-between;
+	align-items: center;
+	padding: ${({ theme }) => theme.spacing(2, 0)};
 `
 
-const StyledLinks = styled.div`
-	display: grid;
-	grid-auto-flow: column;
-	gap: 1rem;
-	margin-left: auto;
+const $HomeLink = styled(Link)`
+	font-size: 1.5rem;
+	font-family: ${({ theme }) => theme.fontFamily.serif};
+	white-space: nowrap;
+`
 
-	${({ theme }) => theme.breakpoints.down('xs')} {
-		grid-template-columns: min-content min-content;
-		grid-template-rows: auto auto;
-		text-align: center;
-		margin: 0 auto;
-	}
+const $SocialLinks = styled.div`
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(10px, min-content));
+	justify-content: flex-end;
+	gap: ${({ theme }) => theme.spacing(2)};
 `

@@ -34,7 +34,7 @@ const Layout: FC<Props> = ({ location, children }) => {
 					toggleTheme={() => setDarkMode(!isDarkMode)}
 				/>
 				<main>{children}</main>
-				<Footer />
+				<Footer location={location} />
 			</Wrapper>
 		</ThemeProvider>
 	)
@@ -49,6 +49,9 @@ const Wrapper = styled.div`
 	margin: 0 auto;
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		padding: ${({ theme }) => theme.spacing(0, 2)};
+	}
+	main {
+		flex-grow: 1;
 	}
 `
 

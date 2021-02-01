@@ -46,12 +46,12 @@ const Projects: FC = () => {
 	} = pageDataJson
 
 	return (
-		<$.Container>
+		<$.Container id="projects">
 			<div>
 				<h2>Projects</h2>
 				<Text.Spaced as="p">{projects.intro}.</Text.Spaced>
 			</div>
-			<$.List id="projects">
+			<$.List>
 				{projects.list.map(project => (
 					<$.Card key={project.title}>
 						<h3>{project.title}</h3>
