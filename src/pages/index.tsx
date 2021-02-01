@@ -7,6 +7,7 @@ import SEO from '../components/seo'
 import Hero from '../components/Hero'
 import Projects from '../components/Projects'
 import styled from 'styled-components'
+import Contact from '../components/Contact'
 
 interface Props {
 	location: Location
@@ -36,6 +37,7 @@ const IndexPage: FC<Props> = ({ data, location }) => {
 			<$Grid>
 				<Hero assets={assets} />
 				<Projects />
+				<Contact />
 			</$Grid>
 		</Layout>
 	)
@@ -66,9 +68,9 @@ const $Grid = styled.div`
 	display: grid;
 	justify-content: center;
 	row-gap: 9rem;
-	padding-top: 5rem;
+	padding: 5rem 0 5rem;
 	${({ theme }) => theme.breakpoints.down('xs')} {
 		row-gap: 5rem;
-		padding-top: 2rem;
+		padding: 2rem 0 2rem;
 	}
 `

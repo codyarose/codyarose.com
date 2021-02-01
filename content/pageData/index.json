@@ -10,7 +10,7 @@
 		"github": "https://github.com/codyarose",
 		"linkedin": "https://www.linkedin.com/in/codyarose/",
 		"twitter": "https://twitter.com/codyarose",
-		"email": "mailto:cody@codyarose.com"
+		"email": "cody@codyarose.com"
 	},
 	"home": {
 		"hero": {
@@ -50,9 +50,9 @@
 				}
 			]
 		},
-		"about": [
-			"I'm a Front End Developer in Austin, TX interested in working (remotely) on challenging projects using React and Typescript.",
-			"I have several years of agency experience building websites from design mockups, but my knowledge of React is all self-taught."
-		]
+		"contact": {
+			"title": "Let's talk",
+			"intro": "I'm currently looking for a remote full-time React Engineer position. If you know of any feel free to reach out!"
+		}
 	}
 }

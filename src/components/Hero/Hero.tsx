@@ -81,7 +81,11 @@ const Hero: FC<Props> = ({ assets }) => {
 					>
 						<Icon variant="doc" height="20" />
 					</a>
-					<a href={social.email} title="Email me" target="_blank">
+					<a
+						href={`mailto:${social.email}`}
+						title="Email me"
+						target="_blank"
+					>
 						<Icon variant="send" width="20" />
 					</a>
 					<a
